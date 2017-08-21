@@ -1,0 +1,13 @@
+!*.xpr
+
+!*.v
+!*.vh
+!*.wcfg
+
+!0_common
+!1_fetch
+!2_decode
+!3_execute
+!4_memory
+!5_writeback
+
