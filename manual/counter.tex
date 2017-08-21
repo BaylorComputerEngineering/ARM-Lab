@@ -1,6 +1,6 @@
 \chapter{Introduction}
 
-n the Labs for this course we will be building a 64-bit computer, so we can understand how it works and how we can make a synthesizable machine in a hardware description language (HDL) like Verilog.  In this lab we will be building the counter that sequences all our computer's instructions.
+In the Labs for this course we will be building a 64-bit computer, so we can understand how it works and how we can make a synthesizable machine in a hardware description language (HDL) like Verilog.  In this lab we will be building the counter that sequences all our computer's instructions.
 
 A computer has to execute one instruction after another.  We will be building a system to count sequentially from some starting number.  Since this counter will be used to keep our program running in order, it is called the program counter.  Our system needs to hold its value, count, and be able to change the starting value.  We will break this into three components: a register (to hold the data), an incrementer (to count), and a mux (to select the count or a new starting value).  For today we will just build the register, simulate it, and show how to write up the lab.
 
