@@ -1,25 +1,24 @@
 `timescale 1ns / 1ps
 `define CYCLE 10
-`define DELAY `CYCLE/8
 `define WORD  64
-`define INST_LEN 32
-`define ZERO `WORD'b0
-`define ONE `WORD'b1
-`define DMEMFILE  "../../../../testfiles/sumD.data"
-`define IMEMFILE  "../../../../testfiles/sumI.data"
-`define RMEMFILE  "../../../../testfiles/sumR.data"
+`define INSTR_LEN 32
+`define DMEMFILE  "C:/Users/potterst/Documents/CompOrg/testfiles/fibD.data"
+`define IMEMFILE  "C:/Users/potterst/Documents/CompOrg/testfiles/fibI.data"
+`define RMEMFILE  "C:/Users/potterst/Documents/CompOrg/testfiles/fibR.data"
+//`define DMEMFILE  "C:/Users/schubertk/Documents/Baylor/classes/3338/Project/testfiles/sumD.data"
+//`define IMEMFILE  "C:/Users/schubertk/Documents/Baylor/classes/3338/Project/testfiles/sumI.data"
+//`define RMEMFILE  "C:/Users/schubertk/Documents/Baylor/classes/3338/Project/testfiles/sumR.data"
+//`define DMEMFILE  "C:/Users/schubertk/Documents/Baylor/classes/3338/Project/verilog/Keith/dmem_sample.list"
+//`define IMEMFILE  "C:/Users/schubertk/Documents/Baylor/classes/3338/Project/verilog/Keith/imem_sample.list"
+//`define RMEMFILE  "C:/Users/schubertk/Documents/Baylor/classes/3338/Project/verilog/Keith/dmem_sample.list"
 
-`define RTYPE 6'b000000
-`define LW    6'b100011
-`define SW    6'b101011
-`define BEQ   6'b000100
-
-`define F_ADD 6'b100000
-`define F_SUB 6'b100010
-`define F_AND 6'b100100
-`define F_OR  6'b100101
-`define F_NOR 6'b100111
-`define F_SLT 6'b101010
+`define ADD  11'b10001011000
+`define SUB  11'b11001011000
+`define AND  11'b10001010000
+`define ORR  11'b10101010000
+`define LDUR 11'b11111000010
+`define STUR 11'b11111000000
+`define CBZ  11'b00010110100
 
 `define ALU_ADD 4'b0010
 `define ALU_SUB 4'b0110
@@ -28,9 +27,10 @@
 `define ALU_NOR 4'b1100
 `define ALU_SLT 4'b0111
 
-`define ALUOp_R   2'b10
-`define ALUOp_ADD 2'b00
-`define ALUOp_SUB 2'b01
+`define ALUOp_RTYPE   2'b10
+`define ALUOp_DTYPE   2'b00
+`define ALUOp_CBZ     2'b01
+
 
 `define CLOG2(x) \
    (x <= 2) ? 1 : \
