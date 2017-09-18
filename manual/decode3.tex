@@ -1,0 +1,55 @@
+\chapter{Control Unit and Sign Extender}
+
+\section{Control Unit}
+Next, we will create the main control unit.  You will create a new module called control (in control.v), and this module will be part of your iDecode module.  The control module should use a portion of the instruction to determine the values of all control signals to be used in our processor.  These signals include:
+\begin{enumerate}
+\item Reg2Loc
+\item Uncondbranch
+\item Branch
+\item MemRead
+\item MemtoReg
+\item ALUOp
+\item MemWrite
+\item ALUSrc
+\item RegWrite
+\end{enumerate}
+
+The supported instructions should include:
+\begin{enumerate}
+	\item ADD
+	\item SUB
+	\item ADD
+	\item ORR
+	\item LDUR
+	\item STUR
+	\item CBZ
+	\item B
+\end{enumerate}
+
+You will need to evaluate the incoming instruction and determine what value to set for each control line.  Inputs and outputs should match Figure 4.23 in the textbook.
+
+\section{Sign Extender}
+The final component of the Decode stage is the Sign Extender.  The sign extender should use information in the instruction to create a 64-bit output value to use as an address offset.  The sign extender should support extending address values from the following instructions:
+\begin{enumerate}
+	\item LDUR
+	\item STUR
+	\item CBZ
+	\item B
+\end{enumerate}
+
+\section{iDecode Test}
+I've made additional updates to the iDecode test, including remove Reg2Loc and RegWrite, since these will now be produced by the control unit.  The unit test now has instructions LDUR, LDUR, ADD, SUB, STUR, CBZ.  When you complete this lab, you should be able to get correct control unit outputs for these instructions as well as produce correct sign extended address values.  This is not an exhaustive test, and you can modify it as you feel necessary to improve testing.
+
+\Verilog{Updated Verilog starter code for the iDecode\_test module.}{code:iDecode_test}{../code/2_decode/iDecode_test.v}
+
+\clearpage
+\section{Your Assignment}
+
+You are to:
+\begin{enumerate}
+\item Create a control module and add it to the iDecode module.
+\item Create a sign extender module and add it to the iDecode module.
+\item Import the updated iDecode\_test.v file and update it as you see fit.
+\item Verify that your results match what you expect.
+\item There will not be a submittal on Canvas today.  However, please show me your results either today or at the beginning of lab time during the next class period.  Next time, we will make sure that your iDecode stage is working properly, integrate it with the iFetch stage, verify that the first two stages work properly, then finally write up a lab report.
+\end{enumerate} 
