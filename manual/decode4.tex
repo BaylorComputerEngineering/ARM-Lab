@@ -1,0 +1,37 @@
+\chapter{Finishing Decode}
+
+\section{Integration and Verification}
+At this point, you have created all of the modules necessary for the decode module.  Now you need to put them all together and verify that they work properly.  You should be able to support all of the instructions listed below, and you should include at least one of each of these instructions in your unit test.  When adding instructions to your unit test, consider testing items like negative numbers in branch addresses and any other relevant untested cases.  Also, for R-type instructions in your unit test, please provide the numerical result via the Write\_data line since we do not have an ALU to perform calculations.  
+
+The supported instruction set includes:
+\begin{enumerate}
+	\item ADD
+	\item SUB
+	\item AND
+	\item ORR
+	\item LDUR
+	\item STUR
+	\item CBZ
+	\item B
+\end{enumerate}
+
+Each instruction should complete during a single clock cycle and should produce expected results.  To verify this, you need to create an expected results table (probably in Excel) that includes a column for every instruction and a row for every data item shown on your simulation output.  You should order the rows identically to the order of your simulation outputs for easy verification.  Then fill in the rows for each instruction with your expected result.  Please use decimal numbers unless binary seems more appropriate.  If a particular data item is not relevant for a particular instruction (for instance, address on an R-type instruction), then just put an X in that cell.
+
+Once your expected results table is complete, you should be able to analyze your simulation output and go vertically down the simulation output and compare it to your expected results table, and it should match.  While certain values will be offset in time, a single instruction should fall within a single clock cycle.  
+
+\section{Your Assignment}
+
+You are to:
+\begin{enumerate}
+\item Integrate all individual modules into the iDecode module.
+\item Test the iDecode module with a variety of instructions, including at least one of each instruction listed above.
+\item Create your expected results table for each instruction in your test. 
+\item Verify that your simulation results match your expected results.
+\item Write a lab report for the entire iDecode stage.  This should include information about each module within iDecode, the iDecode module itself, and the iDecode\_test.  The goal is to concisely but completely describe the iDecode module.  The report should follow the LabN.tex format and should include the following additional items:
+\begin{enumerate}
+	\item Simulation Result Images
+	\item Expected Results Table
+	\item All code used in the iDecode module, including the iDecode\_test
+	\item The elaborated schematic that Vivado produces.  Please make sure to expand the iDecode module so that we can see the contents of it.
+\end{enumerate}
+\end{enumerate} 
