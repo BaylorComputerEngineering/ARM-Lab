@@ -1,0 +1,47 @@
+\chapter{Integrating Fetch and Decode}
+
+\section{Overview}
+We now have working Fetch and Decode modules.  Now it is time to put them together to produce a system that can:
+\begin{enumerate}
+	\item Update the program counter
+	\item Read the appropriate instruction from the instruction datafile
+	\item Read the correct registers
+	\item Update all control lines
+	\item Sign extend address data
+\end{enumerate}
+
+Once we can do all of this, we will be ready for the Execute stage.  We currently have all of the pieces, and they are integrated within their individual stages.  However, when we did the Fetch stage, we were not ready to start thinking about timing quite yet, so each instruction was read one cycle later.  With the experience you have gained with timing in the Decode stage, you will need to update your Fetch stage to process each instruction during the frame in which it is selected (eliminate the one frame delay).  
+
+Each instruction should complete during a single clock cycle and should produce expected results.  To verify this, please update your instruction file to match the instructions that you used in your iDecode test.  Then you can re-use your spreadsheet of expected results to verify that your simulation results are still correct.  You should be able to analyze your simulation output and go vertically down the simulation output and compare it to your expected results table, and it should match.  While certain values will be offset in time, a single instruction should fall within a single clock cycle.  
+
+\section{Details}
+You should create a new top-level file called datapath.v, which will be your top-level file each time we integrate more stages together.  datapath.v will include an iFetch module instance and an iDecode module instance.  This is where you tie the two modules together.  To get started, you can pull code from both iFetch\_test and iDecode\_test.
+
+When you developed your iFetch and iDecode modules, you likely included more output signals than are actually necessary, given that the only necessary outputs are the ones that cross stage boundaries on the datapath diagrams provided in previous labs.  These extra signals are useful for debugging, but once you have your Fetch and Decode stages working well, please do not connect the extra signals in datapath.v.  This will keep the simulation results from getting to be too large.
+
+Besides connecting the correct signals, the key to this lab is timing.  As mentioned above, the timing of the iFetch module will need to be updated first.  But then you will need to get the timing of the Fetch and Decode stages to work properly together.  Please produce a timing diagram that shows when you expect each action in the Fetch and Decode stages to occur.
+
+To control timing between stages, it is helpful to use a delay function that will allow you to delay the Decode stage without having to edit your internal delays.  Below is the code for the delay function as well as an example usage.  The example takes the clk signal and produces clk\_a, which is delayed by 1ns.  clk\_a can then be used as a clock input to a module.  You might need to put multiple delays in series to achieve the desired delays.
+
+\Verilog{Verilog code to delay by 1ns.}{code:delay}{../code/0_common/delay.v}  
+\Verilog{Verilog code use delay function.}{code:delay_usage}{../code/0_common/delay_usage_example.v}  
+
+\section{Your Assignment}
+
+You are to:
+\begin{enumerate}
+\item Update your iFetch module to fetch an instruction in a single cycle.
+\item Update your instruction datafile to use the instructions from iDecode\_test.
+\item Integrate the iFetch and iDecode modules together using a new file, datapath.v.
+\item Produce a timing diagram to show the desired timing of the datapath. 
+\item Update the timing of your datapath to ensure that an instruction is executed in a single cycle.
+\item Verify that the outputs of your integrated system generally match the outputs you predicted for your iDecode\_test.
+\item Write a lab report for the integrated Fetch and Decode stages.  This should focus on datapath.v and any timing updates you made to your modules.  You do not need to re-state the details of the Fetch and Decode modules.  The report should follow the LabN.tex format and should include the following additional items:
+\begin{enumerate}
+	\item Simulation Result Images
+	\item Expected Results Table
+	\item datapath.v code and any substantially updated code in the modules
+	\item A timing diagram that represents the first two stages
+	\item The elaborated schematic that Vivado produces.  Please make sure to expand the iFetch and iDecode modules so that we can see the contents of it.
+\end{enumerate}
+\end{enumerate} 
