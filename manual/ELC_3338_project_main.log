@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2017.7.31)  20 SEP 2017 14:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2017.7.31)  2 OCT 2017 14:25
 entering extended mode
 **ELC_3338_project_main.tex
 (ELC_3338_project_main.tex
@@ -141,11 +141,11 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 2.
-)
-\tf@toc=\write3
- (counter.tex [2
+ [2
 
-]
+])
+\tf@toc=\write3
+ (counter.tex [3]
 Lab 1.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
 File: lstlang1.sty 2014/09/06 1.5e listings language file
@@ -156,7 +156,7 @@ File: lstlang2.sty 2014/09/06 1.5e listings language file
 ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang3.sty"
 File: lstlang3.sty 2014/09/06 1.5e listings language file
 )
-(../code/1_fetch/register.v [3
+(../code/1_fetch/register.v [4
 
 ]
 LaTeX Font Info:    Try loading font information for OML+cmr on input line 12.
@@ -166,7 +166,7 @@ File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 12.
-) [4]
+) [5]
 (../code/1_fetch/register_test.v
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 27.
 
@@ -175,8 +175,8 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 27.
-) [5]
-<../images/registertiming.png, id=28, 393.72093pt x 70.01157pt>
+) [6]
+<../images/registertiming.png, id=31, 393.72093pt x 70.01157pt>
 File: ../images/registertiming.png Graphic file (type png)
 
 <use ../images/registertiming.png>
@@ -184,39 +184,39 @@ Package pdftex.def Info: ../images/registertiming.png used on input line 37.
 (pdftex.def)             Requested size: 343.28249pt x 61.04202pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <14.4> on input line 41.
- [6 <../images/registertiming.png>] [7]
+ [7 <../images/registertiming.png>] [8]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8])
-(counter2.tex [9]
+ [9])
+(counter2.tex [10]
 Lab 2.
-[10
+[11
 
-] (../code/0_common/mux.v) [11]) (instruction_memory.tex [12]
+] (../code/0_common/mux.v) [12]) (instruction_memory.tex [13]
 Lab 3.
-(../code/1_fetch/instr_mem.v [13
+(../code/1_fetch/instr_mem.v [14
 
 ])
 Underfull \hbox (badness 1888) in paragraph at lines 19--19
 []\OT1/cmr/m/n/10 Figure 3.1: In-struc-tion Fetch
  []
 
-<../images/pipeline_fetch.png, id=57, 168.63pt x 310.15875pt>
+<../images/pipeline_fetch.png, id=60, 168.63pt x 310.15875pt>
 File: ../images/pipeline_fetch.png Graphic file (type png)
 
 <use ../images/pipeline_fetch.png>
 Package pdftex.def Info: ../images/pipeline_fetch.png used on input line 21.
 (pdftex.def)             Requested size: 144.54pt x 265.85579pt.
- [14] (../code/1_fetch/iFetch.v [15 <../images/pipeline_fetch.png>]) [16]) (dec
-ode.tex [17]
+ [15] (../code/1_fetch/iFetch.v [16 <../images/pipeline_fetch.png>]) [17]) (dec
+ode.tex [18]
 Lab 4.
-(../code/2_decode/iDecode.v [18
+(../code/2_decode/iDecode.v [19
 
-]) [19]) (decode2.tex [20
+]) [20]) (decode2.tex [21
 
 ]
 Lab 5.
-<../images/register_file_cutout.png, id=81, 703.87968pt x 438.13687pt>
+<../images/register_file_cutout.png, id=84, 703.87968pt x 438.13687pt>
 File: ../images/register_file_cutout.png Graphic file (type png)
 
 <use ../images/register_file_cutout.png>
@@ -224,10 +224,10 @@ Package pdftex.def Info: ../images/register_file_cutout.png used on input line
 12.
 (pdftex.def)             Requested size: 343.28249pt x 213.67944pt.
 
-(../code/2_decode/iDecode_reg_test_version.v [21
+(../code/2_decode/iDecode_reg_test_version.v [22
 
 ])
-<../images/register_file_test_output.png, id=86, 773.13844pt x 499.8675pt>
+<../images/register_file_test_output.png, id=89, 773.13844pt x 499.8675pt>
 File: ../images/register_file_test_output.png Graphic file (type png)
 
 <use ../images/register_file_test_output.png>
@@ -239,29 +239,38 @@ Overfull \hbox (142.8225pt too wide) in paragraph at lines 21--22
  [] 
  []
 
-[22 <../images/register_file_cutout.png>] [23 <../images/register_file_test_out
-put.png>]) (decode3.tex [24
+[23 <../images/register_file_cutout.png>] [24 <../images/register_file_test_out
+put.png>]) (decode3.tex [25
 
 ]
 Lab 6.
-[25
+[26
 
-] (../code/2_decode/iDecode_test.v [26] [27]) [28] [29]) (decode4.tex
-[30
+] (../code/2_decode/iDecode_test.v [27] [28]) [29] [30]) (decode4.tex
+[31
 
 ]
 Lab 7.
-[31
+[32
 
-]) [32] (ELC_3338_project_main.aux) ) 
+]) (intFetchDecode.tex [33]
+Lab 8.
+[34
+
+] (../code/0_common/delay.v) (../code/0_common/delay_usage_example.v)
+[35]) (alu.tex [36]
+Lab 9.
+[37
+
+]) [38] (ELC_3338_project_main.aux) ) 
 Here is how much of TeX's memory you used:
- 2983 strings out of 493698
- 42140 string characters out of 3144403
- 136485 words of memory out of 3000000
- 6254 multiletter control sequences out of 15000+200000
+ 3003 strings out of 493698
+ 42454 string characters out of 3144403
+ 136507 words of memory out of 3000000
+ 6262 multiletter control sequences out of 15000+200000
  10941 words of font info for 38 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 32i,8n,44p,1969b,1649s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 32i,8n,44p,1969b,1651s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
 sfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
@@ -275,9 +284,9 @@ lic/amsfonts/cm/cmsl10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
 onts/cm/cmsl8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
 msy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pf
 b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on ELC_3338_project_main.pdf (32 pages, 460274 bytes).
+Output written on ELC_3338_project_main.pdf (38 pages, 473441 bytes).
 PDF statistics:
- 168 PDF objects out of 1000 (max. 8388607)
+ 189 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
