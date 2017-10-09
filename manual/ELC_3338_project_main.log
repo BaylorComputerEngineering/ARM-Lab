@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2017.7.31)  2 OCT 2017 14:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2017.7.31)  9 OCT 2017 13:47
 entering extended mode
 **ELC_3338_project_main.tex
 (ELC_3338_project_main.tex
@@ -262,31 +262,54 @@ Lab 8.
 Lab 9.
 [37
 
-]) [38] (ELC_3338_project_main.aux) ) 
+]) (execute.tex [38]
+Lab 10.
+<../images/execute_stage.png, id=143, 590.205pt x 475.7775pt>
+File: ../images/execute_stage.png Graphic file (type png)
+
+<use ../images/execute_stage.png>
+Package pdftex.def Info: ../images/execute_stage.png used on input line 16.
+(pdftex.def)             Requested size: 343.28249pt x 276.73518pt.
+ [39
+
+] [40 <../images/execute_stage.png>])
+(intFetchDecodeExecute.tex [41]
+Lab 11.
+[42
+
+] <../images/integrated_execute.png, id=157, 657.2053pt x 503.63156pt>
+File: ../images/integrated_execute.png Graphic file (type png)
+
+<use ../images/integrated_execute.png>
+Package pdftex.def Info: ../images/integrated_execute.png used on input line 28
+.
+(pdftex.def)             Requested size: 343.28249pt x 263.06569pt.
+ [43 <../images/integrated_execute.png>]) [44] (ELC_3338_project_main.aux) ) 
 Here is how much of TeX's memory you used:
- 3003 strings out of 493698
- 42454 string characters out of 3144403
- 136507 words of memory out of 3000000
- 6262 multiletter control sequences out of 15000+200000
+ 3021 strings out of 493698
+ 42910 string characters out of 3144403
+ 136531 words of memory out of 3000000
+ 6272 multiletter control sequences out of 15000+200000
  10941 words of font info for 38 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  32i,8n,44p,1969b,1651s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/P
-rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts
-/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmsl10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
-onts/cm/cmsl8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
-msy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pf
-b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on ELC_3338_project_main.pdf (38 pages, 473441 bytes).
+<C:
+/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program
+ Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsl10.pfb><C:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsl8.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmtt10.pfb>
+Output written on ELC_3338_project_main.pdf (44 pages, 682294 bytes).
 PDF statistics:
- 189 PDF objects out of 1000 (max. 8388607)
+ 212 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

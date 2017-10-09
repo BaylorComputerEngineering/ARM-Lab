@@ -35,3 +35,9 @@
 \contentsline {section}{\numberline {9.1}ALU}{37}
 \contentsline {section}{\numberline {9.2}ALU Control}{37}
 \contentsline {section}{\numberline {9.3}Your Assignment}{38}
+\contentsline {chapter}{\numberline {10}Execute Stage}{39}
+\contentsline {section}{\numberline {10.1}Execute}{39}
+\contentsline {section}{\numberline {10.2}Your Assignment}{39}
+\contentsline {chapter}{\numberline {11}Integrating Fetch and Decode}{42}
+\contentsline {section}{\numberline {11.1}Integration}{42}
+\contentsline {section}{\numberline {11.2}Your Assignment}{43}
