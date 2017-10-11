@@ -41,3 +41,7 @@
 \contentsline {chapter}{\numberline {11}Integrating Fetch and Decode}{42}
 \contentsline {section}{\numberline {11.1}Integration}{42}
 \contentsline {section}{\numberline {11.2}Your Assignment}{43}
+\contentsline {chapter}{\numberline {12}Memory}{45}
+\contentsline {section}{\numberline {12.1}Branch Resolution}{46}
+\contentsline {section}{\numberline {12.2}Data Memory}{46}
+\contentsline {section}{\numberline {12.3}Your Assignment}{46}
