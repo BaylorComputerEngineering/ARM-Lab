@@ -45,3 +45,7 @@
 \contentsline {section}{\numberline {12.1}Branch Resolution}{46}
 \contentsline {section}{\numberline {12.2}Data Memory}{46}
 \contentsline {section}{\numberline {12.3}Your Assignment}{46}
+\contentsline {chapter}{\numberline {13}Write Back}{47}
+\contentsline {section}{\numberline {13.1}Mux}{47}
+\contentsline {section}{\numberline {13.2}Datapath}{47}
+\contentsline {section}{\numberline {13.3}Your Assignment}{50}
