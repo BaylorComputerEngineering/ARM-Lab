@@ -49,3 +49,6 @@
 \contentsline {section}{\numberline {13.1}Mux}{47}
 \contentsline {section}{\numberline {13.2}Datapath}{47}
 \contentsline {section}{\numberline {13.3}Your Assignment}{50}
+\contentsline {chapter}{\numberline {14}Full Datapath}{51}
+\contentsline {section}{\numberline {14.1}Datapath}{51}
+\contentsline {section}{\numberline {14.2}Your Assignment}{53}
