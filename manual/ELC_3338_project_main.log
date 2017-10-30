@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2017.7.31)  23 OCT 2017 13:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2017.7.31)  30 OCT 2017 14:27
 entering extended mode
 **ELC_3338_project_main.tex
 (ELC_3338_project_main.tex
@@ -363,15 +363,19 @@ e 23.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [52])
-[53] (ELC_3338_project_main.aux)
+(pipeline_fetch_decode.tex [53]
+Lab 15.
+[54
+
+]) [55] (ELC_3338_project_main.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3061 strings out of 493698
- 43673 string characters out of 3144403
- 136594 words of memory out of 3000000
+ 3064 strings out of 493698
+ 43744 string characters out of 3144403
+ 136606 words of memory out of 3000000
  6295 multiletter control sequences out of 15000+200000
  10941 words of font info for 38 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
@@ -389,9 +393,9 @@ ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsl8.pfb><C:/Program Files
 /MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on ELC_3338_project_main.pdf (53 pages, 1039684 bytes).
+Output written on ELC_3338_project_main.pdf (55 pages, 1042736 bytes).
 PDF statistics:
- 246 PDF objects out of 1000 (max. 8388607)
+ 253 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

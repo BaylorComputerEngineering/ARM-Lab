@@ -52,3 +52,6 @@
 \contentsline {chapter}{\numberline {14}Full Datapath}{51}
 \contentsline {section}{\numberline {14.1}Datapath}{51}
 \contentsline {section}{\numberline {14.2}Your Assignment}{53}
+\contentsline {chapter}{\numberline {15}Full Datapath}{54}
+\contentsline {section}{\numberline {15.1}Datapath}{54}
+\contentsline {section}{\numberline {15.2}Your Assignment}{54}
