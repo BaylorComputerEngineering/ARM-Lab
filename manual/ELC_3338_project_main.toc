@@ -55,3 +55,6 @@
 \contentsline {chapter}{\numberline {15}Full Datapath}{54}
 \contentsline {section}{\numberline {15.1}Datapath}{54}
 \contentsline {section}{\numberline {15.2}Your Assignment}{54}
+\contentsline {chapter}{\numberline {16}Pipelining without Branching or Forwarding}{56}
+\contentsline {section}{\numberline {16.1}Overview}{56}
+\contentsline {section}{\numberline {16.2}Your Assignment}{57}
