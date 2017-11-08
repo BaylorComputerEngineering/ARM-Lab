@@ -14,12 +14,28 @@ The first step is to create a spreadsheet using the template in this manual dire
 	\item Think through the spreadsheet and determine if you have any holes in your design
 \end{enumerate}  
 
-Only after you have completed the spreadsheet as a group (work together on the spreadsheet) and have showed it to me, then you can move on to writing Verilog code.  You will want to update datapath.v to use the names from the spreadsheet.  This will include adding a lot of new signals.  Then you will want to update your modules to account for these new signals.  Try to change as few names as possible within the modules.  You want to use the stage-specific name in datapath.v rather than in the modules, to the extent possible.  Next, you will add procedural statements to assign inputs to register outputs (or in some cases, they will be registers that are internal to the module).  Compile and fix warnings.  We will run some special instructions next class.  
+Only after you have completed the spreadsheet as a group (work together on the spreadsheet) and have showed it to me, then you can move on to writing Verilog code.  You will want to update datapath.v to use the names from the spreadsheet.  This will include adding a lot of new signals.  Then you will want to update your modules to account for these new signals.  Try to change as few names as possible within the modules.  You want to use the stage-specific name in datapath.v rather than in the modules, to the extent possible.  Next, you will add procedural statements to assign inputs to register outputs (or in some cases, they will be registers that are internal to the module).  Compile and fix warnings.  Test files (instrData, regData, ramData) have been added to the repository.  Please use these files to test your code.  The assembly for those files is below:
+
+\begin{enumerate}
+\item LDUR X9, [X22 , \#0] ;     //load X9 from A[0], X22 = 80, A[0] = 56
+\item LDUR X10, [X22 , \#8 ];    //load X10 from A[1], X22 = 80, A[1] = 8
+\item LDUR X11, [X22 , \#16];    //load X11 from A[2], X22 = 80, A[2] = 35 
+\item LDUR X12, [X22 , \#24];    //load X12 from A[3], X22 = 80, A[3] = 5
+\item SUB X9, X9, X10 ; 
+\item ADD X11, X11, X12 ; 
+\item STUR X9,  [X22 , \#0]
+\item STUR X11, [X22 , \#16]
+\end{enumerate}
+  
 
 
 \section{Your Assignment}
 
 You are to:
 \begin{enumerate}
-\item There is no lab report today.
+\item Finish the spreadsheet
+\item Implement the spreadsheet in your datapath.v
+\item Update your modules to buffer the appropriate values into registers
+\item Use the test data files to test the pipeline and correct any issues
+\item There is no lab report today
 \end{enumerate} 
