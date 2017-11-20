@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2017.7.31)  8 NOV 2017 14:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2017.7.31)  20 NOV 2017 13:18
 entering extended mode
 **ELC_3338_project_main.tex
 (ELC_3338_project_main.tex
@@ -371,14 +371,18 @@ Lab 15.
 Lab 16.
 [56
 
-]) [57] (ELC_3338_project_main.aux)
+]) (pipeline_with_branching.tex [57]
+Lab 17.
+) [58
+
+] (ELC_3338_project_main.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3067 strings out of 493698
- 43818 string characters out of 3144403
+ 3070 strings out of 493698
+ 43895 string characters out of 3144403
  136606 words of memory out of 3000000
  6295 multiletter control sequences out of 15000+200000
  10941 words of font info for 38 fonts, out of 3000000 for 9000
@@ -397,9 +401,9 @@ ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsl8.pfb><C:/Program Files
 /MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on ELC_3338_project_main.pdf (57 pages, 1046768 bytes).
+Output written on ELC_3338_project_main.pdf (58 pages, 1048214 bytes).
 PDF statistics:
- 259 PDF objects out of 1000 (max. 8388607)
+ 262 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -58,3 +58,6 @@
 \contentsline {chapter}{\numberline {16}Pipelining without Branching or Forwarding}{56}
 \contentsline {section}{\numberline {16.1}Overview}{56}
 \contentsline {section}{\numberline {16.2}Your Assignment}{57}
+\contentsline {chapter}{\numberline {17}Pipelining with Branching}{58}
+\contentsline {section}{\numberline {17.1}Overview}{58}
+\contentsline {section}{\numberline {17.2}Your Assignment}{58}
