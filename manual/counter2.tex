@@ -1,15 +1,17 @@
 \chapter{Program Counter}
 
-As mentioned in the last lab, the program counter is a register that is one word in length.  It holds the address in memory of the next instruction to be fetched and executed.  A typical program counter has to deal with a variety of situations that could change the program counter.  
+As mentioned in the last lab, the program counter is a register that is one word in length.  It holds the address in memory of the next instruction to be fetched and executed.  There are several way that the program counter is updated:  
 \begin{enumerate}
-\item The program counter should advance to the next address each cycle.
-\item If the a branch is taken (from a conditional branch, unconditional branch, interrupt, or error), then the program counter should point to the branch's destination.
+	\item If the program does not branch (via an if statement, while loop, etc), then the program counter should advance to the next address (add 4 bytes) each clock cycle.
+	\item If the conditions of a conditional branch are met, then the program counter should be updated with the branch destination address.
+	\item If an unconditional branch or jump occurs, then the program counter should be updated with the branch destination address.
+	\item If an interrupt or error occurs, then the program counter should be updated with the interrupt or error handler address.
 \end{enumerate}
-The most typical is the computer must fetch instructions in sequential order.
+The instructions will be fetched in sequential order the majority of the time.
 
 \section{Incrementer}
 
-We will build an incrementer by making a simple adder.  Later in our computer we will need another adder, so we will re-use this code.  When used as the program counter, we will pass it a 4 because each instruction is 32-bits long (even though it is a 64-bit computer) and we want to increment to the next instruction in memory.  Most machines are byte addressable, because one ASCII character (a char in c/c++) is a byte.  For a machine with 32-bit instructions like we are using, that would mean $32/8=4$ bytes to a word or each instruction would be 4 addresses later.  The book follows this convention so it will have 4 when it increments its program counter.
+We will build a program counter incrementer by making a simple adder.  Later in our computer we will need another adder, so we will re-use this code.  When used as the program counter, we will pass it a 4 because each instruction is 32-bits long (even though it is a 64-bit computer) and we want to increment to the next instruction in memory.  Most machines are byte addressable, because one ASCII character (a char in c/c++) is a byte.  For a machine with 32-bit instructions like we are using, that would mean $32/8=4$ bytes to a word or each instruction would be 4 addresses later.  The book follows this convention so it will have 4 when it increments its program counter.
 
 An adder is very simple in Verilog.  There are two inputs (the two numbers to be added) and one output (the result).   All the ports are size word because they hold integers.  
 
@@ -17,7 +19,7 @@ In this lab you will make your own adder and a testbench for the adder.  Your ad
 
 \section{Input Selection via Mux}
 
-We will also need to be able to choose between normal advancing (sequential stepping) and branching (loops, if statements, etc.).  We will use a multiplexor (mux) to do this.  A mux is a simple device that connects one of the inputs to the outputs based on how the selector is set.  If the selector is 0 then input 0 is connected to the output, and if the selector is 1 then input 1 is connected to the output.  One interesting addition in this block of code is the addition of a size parameter.  Parameters are passed before the normal ports and are used to configure the code to meet a requirement at the time of construction.  Note parameters cannot change later.  The $=8$ defines the default value if nothing is specified.  In this case we are using parameters to set the number of wires that compose the inputs and output.  In our problem we will need some muxes to switch entire words (64 bits), but later we will also need to switch register addresses (5 bits).  Rather than write two muxes, we will make one and then use the parameter to change the size when they are declared.  The mux code is located in ARM-Lab/code/0\_common/mux.v.
+We will also need to be able to choose between normal advancing (sequential stepping) and branching (loops, if statements, etc.).  We will use a multiplexor (mux) to do this.  A mux is a simple device that connects one of the inputs to the outputs based on how the selector is set.  If the selector is 0 then input 0 is connected to the output, and if the selector is 1 then input 1 is connected to the output.  One interesting addition in this block of code is the addition of a size parameter.  Parameters are passed before the normal ports and are used to configure the code to meet a requirement at the time of construction.  Note parameters are constants and cannot be changed later in the module.  The $=8$ defines the default value if nothing is specified.  In this case we are using parameters to set the number of wires that compose the inputs and output.  In our problem we will need some muxes to switch entire words (64 bits), but later we will also need to switch register addresses (5 bits).  Rather than write two muxes, we will make one and then use the parameter to change the size when they are declared.  The mux code is located in ARM-Lab/code/0\_common/mux.v.
 
 \Verilog{Verilog code to make a mux.}{code:mux}{../code/0_common/mux.v}
 
