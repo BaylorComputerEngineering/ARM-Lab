@@ -34,8 +34,8 @@ module eq1_non_blocking
     // procedural statements with non-blocking assignments
     // non-blocking assignments do not wait for one to complete before 
     // executing the next assignment (used for sequential circuits)
-    p0 <= ~i0 & ~i1; 
-    p1 <= i0 & i1; 
+    p0 <= ~i0 & ~i1;
+    p1 <= i0 & i1; #1;
     eq <= p0 | p1; 
     end
 endmodule
