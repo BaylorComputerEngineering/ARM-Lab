@@ -35,6 +35,10 @@ Before writing your unit test, you should fill in every cell in this table with 
 
 Note that, at this point, the values that are loaded in the registers do not matter, as we are just testing the Control Unit.  Once we get to the full iDecode stage, we will need to address the register values.
 
+The Verilog implementation between 'if/else' statements and 'case' statements differ.  'If/else' statements will create a series of nested muxes with two inputs each, whereas a case statement will produce one large mux with many inputs.  To maximize speed, we should use case statements.  But one of the challenges of this lab is dealing with opcodes of different sizes.  Thankfully, Verilog has 'casex', which will only evaluate binary digits that are not labeled X.  So for a CBZ instruction, you can fill in the last 3 digits with XXX and use 'casex'.  To help you get started, I've included starter code for control.v in  Listing~\ref{code:control}.  The 'casex' syntax will also be very helpful in the Sign Extender.  Also, please create macros in definitions.vh for the opcodes of each instruction and for the ALU Op values of each instruction type.
+
+\Verilog{Control Module}{code:control}{../code/2_decode/control.v}
+
 \section{Sign Extender}
 The final major component of the Decode stage is the Sign Extender.  The Sign Extender should use information in the instruction to create a 64-bit output value to use as an address or branch offset.  The sign extender should support extending address values from the following instructions:
 \begin{enumerate}
