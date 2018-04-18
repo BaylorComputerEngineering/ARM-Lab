@@ -1,0 +1,26 @@
+\chapter{Pipelining without Branching or Forwarding}
+
+
+\section{Overview}
+Now that we have pipelined the fetch and decode stages, we can add the register buffers between each stage and get a simple pipeline working.  This pipeline will not include any data forwarding or branch prediction.  We will handle data hazards by using assembly code with appropriately placed nop commands.  For now, we will avoid control hazards by keeping pc\_src set to 0, which will keep the system from branching (even when you run a branch instruction).  
+
+Only after you have completed the spreadsheet, then you can move on to writing Verilog code.  You will want to update datapath.v to use the names from the spreadsheet.  This will include adding a lot of new signals.  Then you will want to update your modules to account for these new signals.  Use your spreadsheet to make the following updates:
+\begin{enumerate}
+	\item Add input ports to stage modules as needed.  This will be particularly relevant for signals that are passed through.  You should not use the \_id, \_ie, etc naming convention within the module.  You should either use no suffix or the suffix \_in or \_out.
+	\item Update all modules to buffer all inputs into the module.  This will keep inputs from changing while they are being used.  On the positive edge of the clock, you should use procedural assignments to copy all inputs into another register (reg).  This register can either be an output reg (when appropriate) or a local reg (if the signal does not need to be output).  Then do all of the module's processing on the buffered regs.  Try to change as few names as possible within the modules.  Use names that keep you from having to update your signal names to the lower level modules.  In modules that do not currently have a clock, you will need to add the clock.
+	\item Use the information in the spreadsheet to add output ports to stage modules as needed. 
+\end{enumerate}
+Again, try to change as few names as possible within the modules.  You want to use the stage-specific names (\_ie, etc) in datapath.v rather than in the modules, to the extent possible.
+
+Use the instructions from your Expected Results Table to test your pipeline.  Insert NOP instructions where appropriate in your instrData.data.  To insert a NOP instruction, add a 32-bit line with all zeros.
+
+\section{Your Assignment}
+
+You are to:
+\begin{enumerate}
+\item Implement the spreadsheet in your datapath.v
+\item Update your modules to buffer the appropriate values into registers
+\item Use your expected results table instructions to test the pipeline and correct any issues
+\item Once your pipeline is working, go back and try to reduce the cycle time as much as possible (without having to re-architect your solution).
+\item Submit a lab report using the PipelineLabWriteup format.  This is a new format that has been uploaded to my Git repository.
+\end{enumerate} 
