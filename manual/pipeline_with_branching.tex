@@ -1,0 +1,24 @@
+\chapter{Pipelining with Branching}
+
+
+\section{Overview}
+Once your pipeline is working with the simple set of commands that I provided, it is time to add branching.  
+
+We will put the following restrictions on our efforts to branch:
+\begin{enumerate}
+	\item Use Branch Not Taken method of prediction
+	\item You should move the branch decision hardware to the Decode stage as mentioned in the lecture. 
+	\item When a branch is taken, you must zero the control lines and set PCWrite and IF/IDWrite to 0.  You will need to add PCWrite and IF/IDWrite.  Branch hazards must be detected by a new module, the Hazard Detection Unit.
+	\item Instructions used for this should be the division problem instructions.  You need to insert nops (all zeros) in the instruction file where necessary.  The only reason to add nops in the instruction file is a data hazard
+\end{enumerate}  
+
+\section{Your Assignment}
+
+You are to:
+\begin{enumerate}
+\item Implement Branch Not Taken Prediction
+\item Create an instruction file as described above, based on the division problem instruction file
+\item Update your modules to detect and respond to branch hazards
+\item Use the instruction to test the pipeline and correct any issues
+\item Submit picture(s) of your simulation results.  Also submit a zip file of your repository.
+\end{enumerate} 
