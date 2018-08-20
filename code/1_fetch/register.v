@@ -1,9 +1,9 @@
 `include "definitions.vh"
 
 module register(
-    input clk,
-    input reset,
-    input  [`WORD-1:0] D,
+    input wire clk,
+    input wire reset,
+    input  wire [`WORD-1:0] D,
     output reg [`WORD-1:0] Q=`WORD'b0
     );
     

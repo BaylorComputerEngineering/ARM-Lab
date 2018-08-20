@@ -23,37 +23,56 @@
 \begin{document}
 \maketitle
 
-\section{Introduction}
-Introduction with problem overview.  Think of the module that you created as a black box.  What does the black box do?  Be as brief as possible to let me know the big picture of the lab.  
+\section{Executive Summary}
+The Executive Summary section should be a single concise paragraph that describes:
+\begin{enumerate}
+	\item The goal of the lab
+	\item What modules you created and what they do.  This should describe how the modules function and how they fit into the overall processor that we are building.  For instance, for Lab 1, you will want to describe the operation of the register and the fact that it is used to store the program counter, which is used to keep track of which instruction to execute next.
+	\item Whether your lab was successful.  If not successful, please state what is not currently working.
+\end{enumerate}	
 
-In general on these reports, please be as brief and succinct as possible while still conveying the important information.  When I grade these, my goal is to see that your lab project is on track and that you understand what you are doing.  However, I will count off for grammar, spelling, and poor writing quality because these "soft skills" can make or break proposals, reports, etc in industry.
+\section{Test Report}
+To verify operation of this/these module(s), this lab requires N number of test benches.
+\begin{enumerate}
+	\item Register Test Bench
+\end{enumerate}
 
-\section{Interface}
-This section explains the input and output relationships of the design, so it can be treated as a black box.  I have essentially provided you the inputs, outputs, and inouts, but I want to know you understand why.  What inputs are used and how?  What outputs are used and how? 
+\subsection{Register Test Bench}
+The register test bench contains:
+\begin{enumerate}
+	\item Inputs
+	\begin{enumerate}
+		\item name\_of\_input - phrase describing the input
+		\item name\_of\_input - phrase describing the input
+	\end{enumerate}	
+	\item Outputs
+	\begin{enumerate}	
+		\item name\_of\_output - phrase describing the output
+	\end{enumerate}
+\end{enumerate} 
 
-\section{Design}
-This is the internal design of the item.  Design description and explanation, including any pictures, charts, etc.  This is the details of what you want to build, but not how to build it.  In senior design terms, this is the specification.
+Briefly describe what the testbench does and what it is testing.  In something as simple as Lab 1, this might be as short as a few sentences sentences.   
 
-\section{Implementation}
-The Verilog code and explanations of why you implemented this way.  There are many ways to implement a given design in Verilog.  For instance why choose a case statement or ifs?  Why did you trigger on a negedge verses any signal change?  You should reference your code, for example, mine is in Listing~\ref{code:reg} on page~\pageref{code:reg}.  Note you don't have to reference the page, I just wanted to show you how you could, and the power of a label in \LaTeX\ .
-
-\Verilog{Verilog code for implementing a register.}{code:reg}{../code/1_fetch/register.v}
-
-\section{Test Bench Design}
-This is where you discuss the test benches you wrote, and what they were designed to test.  You should discuss expected errors as well as unexpected errors.  Be sure to include your Verilog code of the testbench, for example, mine is in Listing~\ref{code:regtest} on page~\pageref{code:regtest}.
-
-\Verilog{Verilog code for testing a register.}{code:regtest}{../code/1_fetch/register_test.v}
-
-\section{Simulation}
-In this section you should show the results of your simulation, such as timing diagrams and explain any design issues you had to deal with.  A sample timing diagram is in Figure~\ref{fig:regtest} on page~\pageref{fig:regtest}.  Please make sure to include the signal names on the simulation timing diagrams.  Also, make sure that all relevant data on your simulation timing diagram is readable when you generate your PDF.  I grade these by reading the PDF files.  If necessary, I don't mind zooming in on the diagrams as long as they are clear when I zoom in.  To get an image of the simulation timing diagrams, I recommend using the Snipping Tool (installed on all ECS computers).
+Operation of the testbench is verified by comparing the Simulation Results with the Expected Results Table (you can just include this sentence).  Next you should state whether the module works as expected.  If not, please describe what does not work and why it does not work.
 
 \begin{figure}
-\begin{center}
-\caption{Timing diagram for the register test.}\label{fig:regtest}
-\includegraphics[width=0.9\textwidth]{../images/registertiming.png}
-\end{center}
+	\begin{center}
+		\caption{Expected Results of the register test.}\label{fig:ert_registertest}
+		\includegraphics[width=1.0\textwidth]{../images/ert_register_test.png}
+	\end{center}
 \end{figure}
 
-\section{Conclusions}
-Overview the main points you want to stick in peoples minds and answer key questions you want to stick in peoples minds.  Did it work?  How well? What would you have done differently?  What did you learn?
+\begin{figure}
+	\begin{center}
+		\caption{Timing diagram for the register test.}\label{fig:registertest}
+		\includegraphics[width=1.0\textwidth]{../images/register_test.png}
+	\end{center}
+\end{figure}
+
+
+\pagebreak
+
+\section{Code Appendix}
+\Verilog{Verilog code for implementing a register.}{code:reg}{../code/1_fetch/register.v}
+\Verilog{Verilog code for testing a register.}{code:regtest}{../code/1_fetch/register_test.v}
 \end{document} 

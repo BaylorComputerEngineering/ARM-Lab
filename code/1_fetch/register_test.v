@@ -1,10 +1,10 @@
 `include "definitions.vh"
 
 
-module test_regs;
+module register_test;
 
 wire clk;
-wire rst=0;
+reg rst;
 reg[`WORD - 1:0] d;
 wire[`WORD - 1:0] q;
 
@@ -19,11 +19,14 @@ register UUT(
 
 initial
 begin
+    rst = 0;
     d<=`WORD'd0; #`CYCLE;
     d<=`WORD'd1; #`CYCLE;
     d<=`WORD'd2; #`CYCLE;
+    rst = 1;
     d<=`WORD'd3; #`CYCLE;
     d<=`WORD'd4; #(`CYCLE/5);
+    rst = 0;
     d<=`WORD'd5; #(`CYCLE*4/5);
 end
 
