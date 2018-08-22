@@ -34,8 +34,9 @@ module eq1_always
     // procedural statements with blocking assignments
     // blocking assignments wait for one to complete before 
     // executing the next assignment (used for combinational circuits)
+    eq = p0 | p1;
     p0 = ~i0 & ~i1;
     p1 = i0 & i1;
-    eq = p0 | p1;
+//    eq = p0 | p1;
     end
 endmodule
