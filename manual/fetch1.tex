@@ -50,7 +50,7 @@ If you don't specify anything for the port type, you will get a wire - it is the
 
 To help clarify this, please examine Figure~\ref{fig:modulediagram}, which shows the interconnection of the modules in this lab.
 
-The final section is the body or implementation.  It is composed of a single thread of code, that will keep running (hence always).  It will run one time every time there is a positive edge (0 to 1 transition) for either the clock or reset.  Reset has higher priority, so if reset is asserted the register is cleared (Q is set to zero), otherwise the value of D is stored it Q.  That is it.  A nice, simple module.
+The final section is the body or implementation.  It is composed of a single thread of code, that will keep running (hence always).  It will run one time every time there is a positive edge (0 to 1 transition) for either the clock or reset.  Reset has higher priority, so if reset is asserted the register is cleared (Q is set to zero), otherwise the value of D is stored it Q.  That is it.  A nice, simple module.  Please note that the provided register module is fully operational.  You do not need to modify it.
 
 \section{Testbench}
 
@@ -108,10 +108,10 @@ A logical question at this point is why not just have it run twice on its own?  
 
 \subsection{Getting Started with LaTex}
 
-Now that you have some background knowledge, we need to learn how to build a document on your computer.  There are many ways to do this, including text editors and command line tools.  I prefer using a more user-friendly editing and buidling environment.  While there are numerous options available, I choose to use TexStudio.  It is installed on all ECS computers, and it is available for free download at home.  I would recommend opening LabN.tex and building it before making any changes.  Then make some changes, rebuild, and view those changes in the PDF that is generated.  Steps to build a document in TexStudio are:
+Now that you have some background knowledge, we need to learn how to build a document on your computer.  There are many ways to do this, including text editors and command line tools.  I prefer using a more user-friendly editing and buidling environment.  While there are numerous options available, I choose to use TexStudio.  It is installed on all ECS computers, and it is available for free download at home.  For each lab, you will want to make a copy of LabN.tex and name it Lab1.tex, Lab2.tex, etc.  After creating Lab1.tex, I would recommend opening Lab1.tex and building it before making any changes.  Then make some changes, rebuild, and view those changes in the PDF that is generated.  Steps to build a document in TexStudio are:
 \begin{enumerate}
 	\item Open TexStudio on your lab computer
-	\item Use the menus open LabN.tex
+	\item Use the menus open Lab1.tex
 	\item Click on the double green arrow icon near the top.  If you hover over it, it says "Build \& View".
 	\item This should produce a PDF document on the right side of the TexStudio window
 \end{enumerate}
@@ -125,7 +125,8 @@ Note that all code and image references are relative to where the .tex document 
 You are to:
 \begin{enumerate}
 \item Finish the testbench in Listing~\ref{code:register_test} by testing several additional cases.  For instance, what happens when D is set at different points during the clock cycle, or if D is set for longer than a single clock cycle.  Also, reset is not currently being tested.  Does reset work properly?  Does the register work properly after reset has been cleared?
+\item Create an Expected Results Table for your testbench.  An example Expected Results Table is at ARM-Lab/testfiles/Lab1\_Register\_ExpectedResultsTable.xlsx.  The idea behind the Expected Results Table is that you identify how you think the system should operate.  If you don't know how it should work, you will not know whether your simulation results are correct.
 \item Run a simulation and generate a timing diagram.
-\item Write up a lab report in \LaTeX\ following the lab format in \verb1LabN.tex1 and generate a pdf file.
-\item Upload the pdf and all the Verilog files to Canvas.
+\item Write up a lab report in \LaTeX\ following the lab format in \verb1LabN.tex1 and generate Lab1.pdf.
+\item Upload Lab1.pdf file to Canvas.
 \end{enumerate} 
