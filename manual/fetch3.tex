@@ -12,7 +12,9 @@ The other interesting thing about this code is how to initialize the memory.  Th
 
 \Verilog{Instruction Memory}{code:instmem}{../code/1_fetch/instr_mem.v}
 
-Starter code for the instruction memory module is given in Listing~\ref{code:instmem}.  There is only one line of code missing from this code.  Fill in the line of code inside the always block to complete the module.  Write a testbench and expected results table.  Verify that it operates correctly.  In order to confidently verify correct operation, you are required to create an Expected Results Table for your testbench and compare your simulation results with it.  Please show the instruction values in hexadecimal in the Expected Results Table and the Simulation Results.
+Starter code for the instruction memory module is given in Listing~\ref{code:instmem}.  The starter code provides the instruction memory array (imem) and it provides code that populates the imem array with values from a file during initialization.  You need to add the ports to the module and add code to find the correct instruction and output it.  You only want to update the instruction on the positive edge of the clock.  To find the correct instruction, an address (program counter value) must be passed into the module.  
+
+Once the module is complete, write a testbench for the instr\_mem module (instr\_mem\_test).  Verify that the instr\_mem module operates correctly by using 5 different program counter values.  Program counter values should be a multiple of 4 since instructions are 4 bytes long and should not be higher than 52 because there are a limited number of instructions in the data file.  Set the program counter values at different times within the clock cycle to ensure that the instruction is updating on the positive edge of the clock.    In order to confidently verify operation, you are required to create an Expected Results Table for your testbench and compare your Simulation Results with it.  Please show all values in decimal in the Expected Results Table and the Simulation Results.
 
 \section{Fetch Stage}
 Now we need to connect it together.  The components of our instruction fetch (sometimes called ifetch or just fetch) stage are shown in Figure~\ref{fig:fetch}.
@@ -24,7 +26,7 @@ Now we need to connect it together.  The components of our instruction fetch (so
 \end{center}
 \end{wrapfigure}
 
-Any wire (or reg) that comes into or goes out of the figure are input or output ports of the iFetch module.  In Figure~\ref{fig:fetch}, the blue wire is a control signal and comes ultimately from the control unit, which you will build in the decode stage.   Wires (or regs) that are completely contained in the figure are local to the iFetch module and are thus defined internally in the module.  The one exception to this is the current program counter (cur\_pc).  While there is no reason (at this point) that it must be output from the iFetch module, I strongly recommend making it an output so that it shows up on your simulation results, helping you to keep track of which instruction is currently executing.  Also, it will be required when we start pipelining our datapath in Lab 12.
+Any wire (or reg) that comes into or goes out of the figure are input or output ports of the iFetch module.  In Figure~\ref{fig:fetch}, the blue wire is a control signal and comes ultimately from the control unit, which you will build in the decode stage.   Wires (or regs) that are completely contained in the figure are local to the iFetch module and are thus defined internally in the module.  The one exception to this is the current program counter (cur\_pc).  While there is no reason (at this point) that it must be output from the iFetch module, you must still make it an output so that it shows up on your simulation results, helping you to keep track of the program counter for the instruction that is currently executing.  Also, it will be required when we start pipelining our datapath in Lab 12.
 
 While the input and output signals are easily identified by the diagram, you must also determine the size of each signal and whether it is a wire or reg.  When you look at the figure I cut from a figure in the book, note that I labeled every wire on the diagram in green.  For the sake of consistency and debugging, it is required that you use these names.  
 
@@ -35,9 +37,17 @@ Once you have figured out all your connecting signals (wires and regs), you shou
 \section{Fetch Testbench}
 Once you have made your connections, you should test the operation of the iFetch module by creating iFetch\_test.v.  You know you checked your individual modules, but there could be errors, or unexpected behavior when you put them together.  Sometimes weird timings between modules causes signals to be missed and such.  
 
-Your testbench should create an instance of the iFetch module, set the inputs into the iFetch module, and verify that the correct outputs are produced. You should test both sequential operation (PC incrementing by 4) and branching.  When you test branching, keep in mind that my provided instruction file (instrData.data) only contains 14 instructions, so don't branch beyond the end of the file.
+Your testbench should create an instance of the iFetch module, set the inputs into the iFetch module, and verify that the correct outputs are produced. You should test both sequential operation (PC incrementing by 4) and branching.  ,   When you test branching, keep in mind that my provided instruction file (instrData.data) only contains 14 instructions, so don't branch beyond the end of the file.  Make sure to verify that, after branching, the system continues sequentially from that branch address.  I recommend a test like:
+\begin{enumerate}
+	\item Start off by allowing 5 instructions to execute sequentially.
+	\item Then branch forward to instruction by setting pc\_src to 1 and setting the branch target to 36.
+	\item Then set pc\_src back to 0 and allow instructions 11-13 to execute.
+	\item Then branch back to instruction 6 and allow the program run to completion.
+\end{enumerate}
 
-As we progress through this lab, you will learn how critical timing is.  Please look at the cur\_pc value and the instruction value and verify that the instruction that was fetched is the correct instruction, according to instrData.data and the current program counter.  Note that no instruction should be fetched in the first 5ns, as this is a half clock cycle and does not have a rising edge.  I have included a file called delay.v in code/0\_common.  It includes a module that inputs a clock signal and outputs a clock signal that is delay by some number of ns.  This will be useful when resolving timing issues.  Make sure to switch back and forth between sequential and branching to make sure that this works properly.
+As we progress through this lab, you will learn how critical timing is.  Please look at the cur\_pc value and the instruction value and verify that the instruction that was fetched is the correct instruction, according to instrData.data and the current program counter.  Note that no instruction should be fetched in the first 5ns, as this is a half clock cycle and does not have a rising edge.  
+
+I have included a file called delay.v in code/0\_common.  It includes a module that inputs a clock signal and outputs a clock signal that is delay by some number of ns.  This will be useful when resolving timing issues.  
 
 In order to confidently verify correct operation, you are required to create an Expected Results Table for your testbench and compare your simulation results with it.
 
@@ -54,5 +64,5 @@ You are to:
 \item Create an Expected Results Table for this testbench.
 \item Verify the results of this testbench by comparing the Expected Results Table with the Simulation Results.
 \item Write up a lab report in \LaTeX\ following the lab format in \verb1LabN.tex1 and generate a pdf file.
-\item Upload the pdf and all the Verilog files to Canvas.
+\item Upload the pdf to Canvas.
 \end{enumerate} 

@@ -2,6 +2,7 @@
 \usepackage{graphicx} % new way of doing eps files
 \usepackage{listings} % nice code layout
 \usepackage[usenames]{color} % color
+\usepackage{float}
 \definecolor{listinggray}{gray}{0.9}
 \definecolor{graphgray}{gray}{0.7}
 \definecolor{ans}{rgb}{1,0,0}
@@ -37,32 +38,18 @@ To verify operation of this/these module(s), this lab requires N test bench(es).
 	\item Register Test Bench
 \end{enumerate}
 
-\subsection{Register Test Bench}
-The register test bench contains:
-\begin{enumerate}
-	\item Inputs
-	\begin{enumerate}
-		\item name\_of\_input - phrase describing the input
-		\item name\_of\_input - phrase describing the input
-	\end{enumerate}	
-	\item Outputs
-	\begin{enumerate}	
-		\item name\_of\_output - phrase describing the output
-	\end{enumerate}
-\end{enumerate} 
+% This section should display the Expected Results Table and the Simulation Results for each test bench.  Make sure to label each figure correctly.  Please put them in the order of ERT1, SimResults1, ERT2, SimResults2 so that I can easily compare the ERT and Simulation Results.  To force the figures to be positioned correctly, add the float package (at the top of this file) and use the [H] after {figure} as I did below.  Also, if the ERT is on one page and the Simulation Results are on the next page, you can use a pagebreak as I did below so that the ERT goes to the next page also.
 
-Briefly describe what the testbench does and what it is testing.  In something as simple as Lab 1, this might be as short as a few sentences sentences.   
+\pagebreak
 
-Now state the results of your testbench.  You can start this paragraph with the statement "Operation of the testbench is verified by comparing the Simulation Results with the Expected Results Table".  There is an example of an Expected Results Table for Lab1 in ARM-Lab/testfiles/Lab1\_Register\_ExpectedResultsTable.xlsx.  Next you should state whether the module works as expected.  If not, please describe what does not work and why it does not work.
-
-\begin{figure}
+\begin{figure}[H]
 	\begin{center}
 		\caption{Expected Results of the register test.}\label{fig:ert_registertest}
 		\includegraphics[width=1.0\textwidth]{../images/ert_register_test.png}
 	\end{center}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 	\begin{center}
 		\caption{Timing diagram for the register test.}\label{fig:registertest}
 		\includegraphics[width=1.0\textwidth]{../images/register_test_timing_diagram.png}
@@ -70,9 +57,8 @@ Now state the results of your testbench.  You can start this paragraph with the 
 \end{figure}
 
 
-\pagebreak
-
 \section{Code Appendix}
-\Verilog{Verilog code for implementing a register.}{code:reg}{../code/1_fetch/register.v}
+% The code appendix should include the test bench code and module code for this lab.
 \Verilog{Verilog code for testing a register.}{code:regtest}{../code/1_fetch/register_test.v}
+\Verilog{Verilog code for implementing a register.}{code:reg}{../code/1_fetch/register.v}
 \end{document} 
