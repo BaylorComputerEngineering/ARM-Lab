@@ -26,9 +26,9 @@ Now create a unit test for iDecode by providing the inputs for iDecode and verif
 With your Expected Results Table in hand, you should be able to run the iDecode unit test and analyze your simulation outputs by going vertically down the simulation output, comparing the table to your simulation output.  While certain values will be offset in time, a single instruction should fall within a single clock cycle.  
 
 \section{Integrating iFetch and iDecode}
-Now that you have iDecode created and tested, you can test it with your iFetch module.  To do this, you need to create a file called datapath.v.  This will be your top-level file for your integrated datapath, analagous to the test bench files.  In this file, you should have an instance of iFetch and iDecode.  You should connect these two modules with wires by analyzing the full datapath diagram.  Since we do not have a full datapath yet, we need to have some "test bench" aspects to datapath.v.  Similarly to your iFetch test, you will want to create a reg for reset, pc\_src, and branch\_target.  Since we do not have all aspects of branching implemented, please keep pc\_src set to 0 for the duration of the test.  
+Now that you have iDecode created and tested, you can test it with your iFetch module.  To do this, you need to create a file called datapath.v.  This will be your top-level file for your integrated datapath, and it is also the test bench.  In this file, you should have an instance of iFetch and iDecode.  You should connect these two modules with wires by analyzing the full datapath diagram.  Since we do not have a full datapath yet, we need to manipulate some values in datapath.v.  Once the datapath is complete, there will be no need to manipulate values because everything will be connected.  Similarly to your iFetch test, you will want to create a reg for reset, pc\_src, and branch\_target.  Since we do not have all aspects of branching implemented, please keep pc\_src set to 0 for the duration of the test.  You will also need to provide values for write\_data since we do not yet have the stages that produce the value for write\_data.  
 
-Please update your instrData.data file to only contain the 10 instructions in your Expected Results Table.  The goal of datapath.v is to verify that the PC increments, each of these instructions is fetched at the appropriate time, and that the instruction executes properly.  You can verify the execution by comparing your results with your expected results table.     
+Please update your instrData.data file to only contain the 10 instructions in your Expected Results Table.  The goal of datapath.v is to verify that the PC increments, each of these instructions is fetched at the appropriate time, and that the instruction is decoded properly.  You can verify the execution by comparing your results with your expected results table.     
 
 \section{Your Assignment}
 
@@ -40,5 +40,5 @@ You are to:
 \item Verify that your simulation results match your expected results.
 \item Create datapath.v and integrate the iFetch and iDecode stages.
 \item Verify that the results match the Expected Results Table.
-\item Write a lab report according to the LabN format.  The focus of the report is the iDecode module, including testing it with iDecode\_test and integrating it with iFetch.  It does not need to describe the details of the submodules...you have already written a report on those.  Please consider datapath.v to be a testbench when writing the report.
+\item Write a lab report according to the LabN format.
 \end{enumerate} 
