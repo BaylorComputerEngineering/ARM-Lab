@@ -19,15 +19,14 @@ In the last lab, you created the ALU and ALU Control modules.  Now we will finis
 
 These five modules should be included in a new module called iExecute.  iExecute should consist of everything shown in the red box on Figure ~\ref{fig:execute_stage}. 
 
+Next, create a test bench to verify that your iExecute module works correctly.  Use the 10 instructions from your Expected Results Table.  To do this successfully, you will need to evaluate which signals are inputs to the iExecute stage and provide the input values based on your previous Expected Results Table.  For example, the ALU Control module needs an input of opcode, so you would retrieve your opcode for each instruction from the opcode row of the Expected Results Table.  The iExecute module does not need a clock.  In addition to the inputs from your Expected Results Table, you will also need to provide a PC value.  In your test bench, this PC value should start at 0 and increment by 4 for each instruction.
+
 \section{Your Assignment}
-I have provided a test bench, iExecute\_test.v.  Feel free to modify and improve it as you see fit.
-
-\Verilog{iExecute Test Bench}{code:iExecute_test}{../code/3_execute/iExecute_test.v}
-
 You are to:
 \begin{enumerate}
 \item Complete the iExecute module 
-\item Use the iExecute\_test to create an Expected Results Table.  In the table, just have a column for each clock cycle, since each instruction is executed in one clock cycle.
+\item Update your Expected Results Table with the outputs from the iExecute stage.  Also add a PC value. 
+\item Create an iExecute\_test module
 \item Verify that your simulation results match your expected results.
 \item Create a lab report in the LabN format.
 \end{enumerate} 
