@@ -44,16 +44,10 @@ You are to:
 \end{enumerate} 
 
 \section{Division}
-To further verify your datapath operation, you should create a new set of datafiles to implement the division code shown below.  You should first write assembly code, then translate it into binary.  One restriction is that the only non-zero value in your regData.data should be X22, which can be used as the base address for the array A.  Otherwise, all other data must be loaded from memory via the ramData.data and LDUR commands.  Please pay attention to the comments in division.c.
+To further verify your datapath operation, you should create a new set of datafiles to implement the division code shown below.  You should first write assembly code, then translate it into binary.  Replace the code in instrData.data with this new machine code.  One restriction is that the only non-zero value in your regData.data should be X22, which can be used as the base address for the array A.  Please update regData.data to zero out all lines except for the line that corresponds to X22 and please set X22 to 16.  Otherwise, all other data must be loaded from memory via the ramData.data and LDUR commands.  Please pay attention to the comments in division.c.
 
 \Verilog{C code for doing simple division.}{code:division}{../code/division.c}
 
-\begin{figure}
-	\caption{Full Non-Pipelined Datapath}\label{fig:datapath}
-	\begin{center}
-		\includegraphics[width=\textwidth]{../images/non_pipelined_datapath.png}
-	\end{center}
-\end{figure}
 
 \section{Your Assignment Part 2}
 
