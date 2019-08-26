@@ -124,7 +124,13 @@ Note that all code and image references are relative to where the .tex document 
 
 You are to:
 \begin{enumerate}
-\item Finish the testbench in Listing~\ref{code:register_test} by testing several additional cases.  For instance, what happens when D is set at different points during the clock cycle, or if D is set for longer than a single clock cycle.  Also, reset is not currently being tested.  Does reset work properly?  Does the register work properly after reset has been cleared?
+\item Finish the testbench in Listing~\ref{code:register_test} by testing several additional cases.  Please add the following test cases:
+\begin{enumerate}
+	\item Change the value of D at different points during the clock cycle and check the results to ensure that they match the expected behavior of a register.  Please add 3 additional changes in D at different time intervals to fulfill this requirement.
+	\item Add a case where D is set for multiple clock cycles and ensure that the results match the expected behavior.
+	\item Test the reset functionality to ensure that it clears the output Q when reset is asserted.
+	\item Verify that the register returns to normal operation once the reset is de-asserted.
+\end{enumerate} 
 \item Create an Expected Results Table for your testbench.  An example Expected Results Table is at ARM-Lab/testfiles/Lab1\_Register\_ExpectedResultsTable.xlsx.  The idea behind the Expected Results Table is that you identify how you think the system should operate.  If you don't know how it should work, you will not know whether your simulation results are correct.
 \item Run a simulation and generate a timing diagram.
 \item Write up a lab report in \LaTeX\ following the lab format in \verb1LabN.tex1 and generate Lab1.pdf.  I have provided an example Lab1 report to give you an idea of the level of detail that I am looking for.  Please do not copy my the Executive Summary from my example report...it will be very obvious.  Write the Executive Summary in your own words based on your own understanding.  
