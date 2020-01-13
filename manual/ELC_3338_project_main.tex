@@ -1,0 +1,49 @@
+
+\documentclass[openany]{book}
+\usepackage{graphicx} % images
+\usepackage{wrapfig}
+\usepackage{listings} % nice code layout
+\usepackage[usenames]{color} % color
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{graphgray}{gray}{0.7}
+\definecolor{ans}{rgb}{1,0,0}
+\definecolor{blue}{rgb}{0,0,1}
+% \Verilog{title}{label}{file}
+\newcommand{\Verilog}[3]{
+  \lstset{language=Verilog}
+  \lstset{backgroundcolor=\color{listinggray},rulecolor=\color{blue}}
+  \lstset{linewidth=\textwidth}
+  \lstset{commentstyle=\textit, stringstyle=\upshape,showspaces=false}
+  \lstset{frame=tb, tabsize=2}
+  \lstinputlisting[caption={#1},label={#2}]{#3}
+}
+\renewcommand{\chaptername}{Lab}
+\newcommand{\WrapBarrier}{$\quad$\vspace*{-.225in}}
+
+
+\title{ELC 3338 Project Book}
+\author{Steve Potter}
+
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\input{fetch1}
+%\input{fetch2}
+%\input{fetch3}
+%\input{decode1}
+%\input{decode2}
+%\input{decode3}
+%\input{execute1}
+%\input{execute2}
+%\input{execute3}
+%\input{memory1}
+%\input{writeback}
+%\input{pipeline_fetch_decode}
+%\input{pipeline_no_forwarding}
+%\input{pipeline_with_branching}
+
+\end{document} 
