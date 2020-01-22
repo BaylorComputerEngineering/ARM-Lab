@@ -10,12 +10,12 @@ function void verify(input bit[`WORD-1:0] cr, int cr_bits, input bit[`WORD-1:0] 
     $timeformat(-9, 0, " ns", 20);
     assert ((cr == ar) && (cr_bits == ar_bits))
     begin
-        $display ("+++ Step %0d: Pass: \ttime = %0t | cr = %0d | ar = %0d | cr_bits = %0d | ar_bits = %0d +++", step, $time, cr, ar, cr_bits, ar_bits);
+        $display ("+++ Step %0d: Pass: \ttime = %0t | cr = %0d | ar = %0d | cr_bits = %0d | ar_bits = %0d +++", step, $time, $signed(cr), $signed(ar), cr_bits, ar_bits);
         pass_count++;
     end
     else 
     begin
-        $display ("--- Step %0d: Fail: \ttime = %0t | cr = %0d | ar = %0d | cr_bits = %0d | ar_bits = %0d ---", step, $time, cr, ar, cr_bits, ar_bits);
+        $display ("--- Step %0d: Fail: \ttime = %0t | cr = %0d | ar = %0d | cr_bits = %0d | ar_bits = %0d ---", step, $time, $signed(cr), $signed(ar), cr_bits, ar_bits);
         fail_count++;
     end
     step++;   
