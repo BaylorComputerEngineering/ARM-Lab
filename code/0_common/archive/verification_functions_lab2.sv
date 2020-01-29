@@ -6,20 +6,16 @@ int pass_count = 0;
 int fail_count = 0;
 int step = 1;
 
-
-function void verify(string title, input bit[`WORD-1:0] cr, int cr_bits, input bit[`WORD-1:0] ar, int ar_bits, int format);
+function void verify(input bit[`WORD-1:0] cr, int cr_bits, input bit[`WORD-1:0] ar, int ar_bits);
     $timeformat(-9, 0, " ns", 20);
     assert ((cr == ar) && (cr_bits == ar_bits))
     begin
-        if(format == `HEX)
-            $display ("+++ Step %0d: Pass: %s time = %0t | cr = %0h | ar = %0h | cr_bits = %0d | ar_bits = %0d +++", step, title, $time, cr, ar, cr_bits, ar_bits);
-        else
-            $display ("+++ Step %0d: Pass: %s time = %0t | cr = %0d | ar = %0d | cr_bits = %0d | ar_bits = %0d +++", step, title, $time, $signed(cr), $signed(ar), cr_bits, ar_bits);
+        $display ("+++ Step %0d: Pass: \ttime = %0t | cr = %0d | ar = %0d | cr_bits = %0d | ar_bits = %0d +++", step, $time, $signed(cr), $signed(ar), cr_bits, ar_bits);
         pass_count++;
     end
     else 
     begin
-        $display ("--- Step %0d: Fail: %s time = %0t | cr = %0d | ar = %0d | cr_bits = %0d | ar_bits = %0d ---", step, title, $time, $signed(cr), $signed(ar), cr_bits, ar_bits);
+        $display ("--- Step %0d: Fail: \ttime = %0t | cr = %0d | ar = %0d | cr_bits = %0d | ar_bits = %0d ---", step, $time, $signed(cr), $signed(ar), cr_bits, ar_bits);
         fail_count++;
     end
     step++;   
