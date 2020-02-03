@@ -2,7 +2,7 @@
 
 module iFetch_test;
 import verification::*;
-wire clk;
+wire clk, clk_plus_1;
 reg reset;
 reg pc_src;
 reg [`WORD-1:0] branch_target;
@@ -16,8 +16,15 @@ string instr_string = "|instruction|";
 
 oscillator clk_gen(clk);
 
-iFetch#(.SIZE(16))  iF(
+// Takes input of clk and produces a clock signal that is delay by 1 ns (clk_plus_1)  
+delay clk_delay_1(
+    .a(clk),
+    .a_delayed(clk_plus_1)
+    );   
+
+iFetch#(.SIZE(64))  iF(
     .clk(clk),
+    .clk_delayed(clk_plus_1),
     .reset(reset),
     .pc_src(pc_src),
     .branch_target(branch_target),
@@ -109,6 +116,23 @@ verify(pc_string, cr_cur_pc, $bits(cr_cur_pc), cur_pc, $bits(cur_pc), `S_DEC);
 cr_instruction = `INSTR_LEN'h56789ABC;
 verify(instr_string, cr_instruction, $bits(cr_instruction), instruction, $bits(instruction), `HEX);
 
+#1;
+cr_cur_pc=branch_target+8; 
+verify(pc_string, cr_cur_pc, $bits(cr_cur_pc), cur_pc, $bits(cur_pc), `S_DEC);
+cr_instruction = `INSTR_LEN'h56789ABC;
+verify(instr_string, cr_instruction, $bits(cr_instruction), instruction, $bits(instruction), `HEX);
+
+#1;
+cr_cur_pc=branch_target+12; 
+verify(pc_string, cr_cur_pc, $bits(cr_cur_pc), cur_pc, $bits(cur_pc), `S_DEC);
+cr_instruction = `INSTR_LEN'h56789ABC;
+verify(instr_string, cr_instruction, $bits(cr_instruction), instruction, $bits(instruction), `HEX);
+
+#1;
+cr_cur_pc=branch_target+12; 
+verify(pc_string, cr_cur_pc, $bits(cr_cur_pc), cur_pc, $bits(cur_pc), `S_DEC);
+cr_instruction = `INSTR_LEN'h6789ABCD;
+verify(instr_string, cr_instruction, $bits(cr_instruction), instruction, $bits(instruction), `HEX);
 final_result();
 
 $finish;
