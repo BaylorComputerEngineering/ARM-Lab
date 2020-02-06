@@ -11,14 +11,14 @@ The next stage in the datapath is the iDecode stage.  The iDecode stage evaluate
 	\item rd\_num (though the book uses Rt for D-type instructions, we will use Rd for the last operand of D-type instructions)
 \end{enumerate}   
 
-To do this, you will create a new module called instr\_parse.  This module will simply read an input and assign appropriate output values.  These outputs should be assigned using continuous assignments.  The input is a 32-bit instruction.  Outputs are listed for you above.  Although R-type and D-type instructions have different operands, you can treat them the same for now.  For instance, you can still assign an Address field on an R-type instruction, and you can still assign an Rm field on a D-type instruction.  When we create the Control Module in a future lab, the control signals will drive what fields of the instruction are used and what fields are ignored.  Notice how, because of the commonality of instruction format, Opcode, Rn, and Rd are all universal across these instruction types.  Please remember to use the style specified in the previous lab, where all items are lower case with underscores separating them.  For instance, for Rd, you should use the signal name rd\_num.  Appending num on the end of the name indicates that this is the register number, not the value from the register.
+To do this, you will create a new module called instruction\_parse.  This module will simply read an input and assign appropriate output values.  These outputs should be assigned using continuous assignments.  The input is a 32-bit instruction.  Outputs are listed for you above.  Although R-type and D-type instructions have different operands, you can treat them the same for now.  For instance, you can still assign an Address field on an R-type instruction, and you can still assign an Rm field on a D-type instruction.  When we create the Control Module in a future lab, the control signals will drive what fields of the instruction are used and what fields are ignored.  Notice how, because of the commonality of instruction format, Opcode, Rn, and Rd are all universal across these instruction types.  Please remember to use the style specified in the previous lab, where all items are lower case with underscores separating them.  For instance, for Rd, you should use the signal name rd\_num.  Appending num on the end of the name indicates that this is the register number, not the value from the register.
 
 To test this module, you will need to finish instr\_parse\_test.sv.  I have provided some starter code for the testbench as well as detailed comments that describe what you need to do.  The testbench will feed the module with instructions.  The instructions are specified in the testbench and are very similar (yet slightly different) to the instructions that were encoded in the lecture on Machine Code.  You will need to update the testbench by:
 
 \begin{enumerate}
 	\item Creating signals to be used in the testbench
 	\item Setting the instruction to the correct value per the instruction listed in the comments
-	\item Add code to verify that each output of your instr\_parse module is correct
+	\item Add code to verify that each output of your instruction\_parse module is correct
 \end{enumerate}
 
 The final output of your testbench should match the output shown in Figure~\ref{fig:instr_parse_test_output}.
@@ -36,15 +36,7 @@ Next, we will create the register file.  The register file is a piece of memory 
 
 Inputs to the module should include a signal called read\_clk and a signal called write\_clk as well as all inputs shown on the Register file in Figure~\ref{fig:register_file_cutout}.  Don't forget reg\_write.  This is a control signal that determines whether data should be written to the register.  Some instruction write to registers, others do not.  The outputs should be the outputs of the Register file in Figure~\ref{fig:register_file_cutout}.  Use names such as read\_register1, read\_data2, etc.
 
-You will need to write a testbench, regfile\_test.v, for this module as well.  It should provide values for each input and verify that the outputs match expected behavior.  You should use the delay module in your testbench to create different clocks for read\_clk and write\_clk.  Recommended test cases include:
-
-\begin{enumerate}
-	\item Set Read Register 1 and verify that Read Data 1 contains the correct data, according the regData.data.  Repeat this for several different Read Register 1 values.
-	\item Set Read Register 2 and verify that Read Data 2 contains the correct data, according the regData.data.  Repeat this for several different Read Register 2 values.
-	\item Write data to the Write Register, then set Read Register 1 to that register and verify that the value has been updated to the value that you wrote to Write Register.
-	\item Change Write Register, then write data to the Write Register, then set Read Register 2 to that register and verify that the value has been updated to the value that you wrote to Write Register.
-	\item Repeat the last 2 steps but have reg\_write set to 0 and verify that the register value does not get updated.
-\end{enumerate} 
+I have provided the majority of the testbench for this module, regfile\_test.sv.  It  provide input values and verifies that the outputs match expected behavior.  Notice how the testbench utilizes the delay module to create different clocks for read\_clk and write\_clk.  The testbench is designed to test a variety of scenarios and to verify the timing aspects of this module.  Your only job on the testbench is to fill in the correct result (cr) values in the testbench.  They are currently populated with X.
 
 \begin{figure}
 	\caption{Instruction Parse and Regfile Diagrams}\label{fig:register_file_cutout}
@@ -59,15 +51,15 @@ You will need to write a testbench, regfile\_test.v, for this module as well.  I
 
 You are to:
 \begin{enumerate}
-\item Create an instr\_parse module as described above.
-\item Update instr\_parse\_test and verify the functionality of the instr\_parse module.
+\item Create an instruction\_parse module as described above.
+\item Update instr\_parse\_test and verify the functionality of the instruction\_parse module.  For this testbench, please use hex for instructions and opcodes and unsigned decimal for all other signals.
 \item Create a regfile module.
-\item Create a regfile\_test module and verify the functionality of the regfile module.
+\item Update the regfile\_test module as described above and verify the functionality of the regfile module.  For this testbench, please use signed decimal for all signals.
 \item Rather than writing a lab report, please produce a landscape mode PDF file called Lab4\_lastname.pdf that includes (in this order):
 \begin{enumerate}
 	\item Your name and the lab number.
-	\item A snip of the Simulation Results for the instr\_parse module.  Please show instructions and opcodes in hex and everything else in unsigned decimal.  
-	\item A snip of the test results from the Tcl Console for the instr\_parse module.  This snip should show the entire log from BEGIN TEST RESULTS to END TEST RESULTS.
+	\item A snip of the Simulation Results for the instruction\_parse module.  Please show instructions and opcodes in hex and everything else in unsigned decimal.  
+	\item A snip of the test results from the Tcl Console for the instruction\_parse module.  This snip should show the entire log from BEGIN TEST RESULTS to END TEST RESULTS.
 	\item A snip of the Simulation Results for the regfile module.  Please show everything else in unsigned decimal.  
 	\item A snip of the test results from the Tcl Console for the regfile module.  This snip should show the entire log from BEGIN TEST RESULTS to END TEST RESULTS.	
 \end{enumerate}
