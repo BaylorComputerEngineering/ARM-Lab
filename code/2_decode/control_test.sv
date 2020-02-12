@@ -58,6 +58,7 @@ function verify_control_signals();
     verify(alu_op_string, cr_alu_op, $bits(cr_alu_op), alu_op, $bits(alu_op), `BINARY);
     verify(mem_write_string, cr_mem_write, $bits(cr_mem_write), mem_write, $bits(mem_write), `BINARY);
     verify(alu_src_string, cr_alu_src, $bits(cr_alu_src), alu_src, $bits(alu_src), `BINARY);    
+    verify(reg_write_string, cr_reg_write, $bits(cr_reg_write), reg_write, $bits(reg_write), `BINARY);    	
 endfunction
 
 initial
