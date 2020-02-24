@@ -72,8 +72,8 @@ iDecode iD(
         .clk(clk),
         .read_clk(read_clk),
         .write_clk(write_clk),
-        .instruction_in(instruction),
-        .write_data_in(write_data), 
+        .instruction(instruction),
+        .write_data(write_data), 
         .opcode(opcode),
         .sign_extended_output(sign_extended_output),
         .reg2_loc(reg2_loc),        
@@ -144,7 +144,7 @@ begin_test();
     $display("Test Case %0d: | ADD X10, X19, X9", tc++);    
     instruction = X;
     cr_opcode = X;    
-    cr_sign_extended_output = X;
+//    cr_sign_extended_output = X;
     cr_reg2_loc = X;        
     cr_uncondbranch = X;
     cr_branch = X;
@@ -158,7 +158,7 @@ begin_test();
     cr_read_data2 = X;    
     #2;
     verify(opcode_string, cr_opcode, $bits(cr_opcode), opcode, $bits(opcode), `BINARY);        
-    verify(sign_extended_output_string, cr_sign_extended_output, $bits(cr_sign_extended_output), sign_extended_output, $bits(sign_extended_output), `HEX);
+//    verify(sign_extended_output_string, cr_sign_extended_output, $bits(cr_sign_extended_output), sign_extended_output, $bits(sign_extended_output), `HEX);
     verify_control_signals();
     verify(read_data1_string, cr_read_data1, $bits(cr_read_data1), read_data1, $bits(read_data1), `S_DEC);
     verify(read_data2_string, cr_read_data2, $bits(cr_read_data2), read_data2, $bits(read_data2), `S_DEC);
