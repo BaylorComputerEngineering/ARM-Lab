@@ -150,8 +150,8 @@ begin
     alu_op<=`ALUOp_CBZ;
     alu_src<=1'b0;
     sign_extended_output<=`WORD'd8;
-    read_data1<=`WORD'dX;
-    read_data2<=`WORD'dX;
+    read_data1<=`WORD'd99;
+    read_data2<=`WORD'd20;
     opcode<=`CBZ;
     
     cr_branch_target = `WORD'dX;
