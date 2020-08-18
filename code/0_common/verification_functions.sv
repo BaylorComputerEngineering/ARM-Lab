@@ -4,36 +4,33 @@ package verification;
 
 int pass_count = 0;
 int fail_count = 0;
-int step = 1;
 
-
-function void verify(string title, input bit[`WORD-1:0] cr, int cr_bits, input bit[`WORD-1:0] ar, int ar_bits, int format);
+function void verify(int step, string title, input bit[`WORD-1:0] er, int er_bits, input bit[`WORD-1:0] ar, int ar_bits, int format);
     $timeformat(-9, 0, " ns", 20);
-    assert ((cr == ar) && (cr_bits == ar_bits))
+    assert ((er == ar) && (er_bits == ar_bits))
     begin
         if(format == `HEX)
-            $display ("+++ Step %0d: Pass: %s time = %0t | cr = %0h | ar = %0h | cr_bits = %0d | ar_bits = %0d +++", step, title, $time, cr, ar, cr_bits, ar_bits);
+            $display ("+++ Step %0d: Pass: %s time = %0t | er = %0h | ar = %0h | er_bits = %0d | ar_bits = %0d +++", step, title, $time, er, ar, er_bits, ar_bits);
         else if(format == `BINARY)
-            $display ("+++ Step %0d: Pass: %s time = %0t | cr = %0u | ar = %0u | cr_bits = %0d | ar_bits = %0d +++", step, title, $time, cr, ar, cr_bits, ar_bits);
+            $display ("+++ Step %0d: Pass: %s time = %0t | er = %0u | ar = %0u | er_bits = %0d | ar_bits = %0d +++", step, title, $time, er, ar, er_bits, ar_bits);
         else if(format == `US_DEC)
-            $display ("+++ Step %0d: Pass: %s time = %0t | cr = %0d | ar = %0d | cr_bits = %0d | ar_bits = %0d +++", step, title, $time, cr, ar, cr_bits, ar_bits);
+            $display ("+++ Step %0d: Pass: %s time = %0t | er = %0d | ar = %0d | er_bits = %0d | ar_bits = %0d +++", step, title, $time, er, ar, er_bits, ar_bits);
         else
-            $display ("+++ Step %0d: Pass: %s time = %0t | cr = %0d | ar = %0d | cr_bits = %0d | ar_bits = %0d +++", step, title, $time, $signed(cr), $signed(ar), cr_bits, ar_bits);
+            $display ("+++ Step %0d: Pass: %s time = %0t | er = %0d | ar = %0d | er_bits = %0d | ar_bits = %0d +++", step, title, $time, $signed(er), $signed(ar), er_bits, ar_bits);
         pass_count++;
     end
     else 
     begin
         if(format == `HEX)
-            $display ("--- Step %0d: Fail: %s time = %0t | cr = %0h | ar = %0h | cr_bits = %0d | ar_bits = %0d ---", step, title, $time, cr, ar, cr_bits, ar_bits);
+            $display ("--- Step %0d: Fail: %s time = %0t | er = %0h | ar = %0h | er_bits = %0d | ar_bits = %0d ---", step, title, $time, er, ar, er_bits, ar_bits);
         else if(format == `BINARY)
-            $display ("--- Step %0d: Fail: %s time = %0t | cr = %0u | ar = %0u | cr_bits = %0d | ar_bits = %0d ---", step, title, $time, cr, ar, cr_bits, ar_bits);
+            $display ("--- Step %0d: Fail: %s time = %0t | er = %0u | ar = %0u | er_bits = %0d | ar_bits = %0d ---", step, title, $time, er, ar, er_bits, ar_bits);
         else if(format == `US_DEC)
-            $display ("--- Step %0d: Fail: %s time = %0t | cr = %0d | ar = %0d | cr_bits = %0d | ar_bits = %0d ---", step, title, $time, cr, ar, cr_bits, ar_bits);
+            $display ("--- Step %0d: Fail: %s time = %0t | er = %0d | ar = %0d | er_bits = %0d | ar_bits = %0d ---", step, title, $time, er, ar, er_bits, ar_bits);
         else
-            $display ("--- Step %0d: Fail: %s time = %0t | cr = %0d | ar = %0d | cr_bits = %0d | ar_bits = %0d ---", step, title, $time, $signed(cr), $signed(ar), cr_bits, ar_bits);
+            $display ("--- Step %0d: Fail: %s time = %0t | er = %0d | ar = %0d | er_bits = %0d | ar_bits = %0d ---", step, title, $time, $signed(er), $signed(ar), er_bits, ar_bits);
         fail_count++;
     end
-    step++;   
 endfunction
 
 function void final_result;

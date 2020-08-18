@@ -8,6 +8,18 @@ module register_test;
 // import the verification package that was included above
 import verification::*;
 
+// declare a test case variable to clearly indicate which
+// test case is being run
+// this variable will be incremented after each test case
+int tc = 1;
+
+// declare a test case variable to clearly indicate which
+// test step is being run
+// this variable will be incremented after each test step
+// but will be set back to 1 for each new test case
+// each test case has one or more test steps
+int ts = 1;
+
 // create a 1-bit wire for use as a clock signal, oscillating between 0 and 1
 wire clk;
 
@@ -20,8 +32,8 @@ reg[`WORD - 1:0] d;
 // create a 64 bit wire that will carry the Q output from the Flip Flop
 wire[`WORD - 1:0] q;
 
-// create a 64 bit reg that you will set to the correct result (cr) 
-reg[`WORD - 1:0] cr;
+// create a 64 bit reg that you will set to the expected result (er) of q 
+reg[`WORD - 1:0] er_q;
 
 // create an instance of the oscillator module (provided) that will toggle the
 // clock signal with a cycle time of 10ns
@@ -40,6 +52,11 @@ register myreg(
     .Q(q)
     );
 
+// create strings for each item to be verified
+// these are used to clearly indicate which signal 
+// is being verified
+string q_string = "|q|";
+
 // the initial section is executed one time when the system starts up
 // the initial section is a procedural block, meaning that regs must 
 // be used for signals that you will be manipulating in the initial section
@@ -48,81 +65,136 @@ begin
     // call a verification function at the beginning to start the log
     begin_test();
 
+///// TEST CASE 1 /////
+    $display("Test Case %0d", tc++);
+
     // set the reset pin to 0
     rst = 0;
     
     // set in to 0 (sets all 64 bits to a value of 0 in decimal)
-    d=`WORD'd0; 
+    d = `WORD'd0; 
     // wait for one cycle (10ns)
     #`CYCLE;
     
-    // set the correct result (cr) to the value that you believe should 
+    // set the expected result (er) to the value that you believe should 
     // be produced on the Q output at this particular point in time
-    cr=`WORD'd0; 
+    er_q=`WORD'd0; 
     
     // call the verify function from the verification package
     // this function can be viewed in verification_functions.sv
-    // the verify function compares the value of cr to the value
+    // the verify function compares the value of er to the value
     // of ar (actual result, see function definition).  It also 
-    // compares the size of ar and cr 
-    verify(cr, $bits(cr), q, $bits(q));
-    
+    // compares the size of ar and er 
+    verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
+
+///// TEST CASE 2 /////
+  
     // repeat the previous steps using different input values and 
     // different delays
-    d=`WORD'd1; 
+    $display("\nTest Case %0d", tc++);    
+    d = `WORD'd527; 
     #`CYCLE;
-    cr=`WORD'd9; 
-    verify(cr, $bits(cr), q, $bits(q));
+    er_q = `WORD'd527; 
+    verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
 
-    d=`WORD'd2; 
-    #`CYCLE;
-    cr=`WORD'd8; 
-    verify(cr, $bits(cr), q, $bits(q));
+///// TEST CASE 3 /////
 
-    d=`WORD'd3; 
+    $display("\nTest Case %0d", tc++);
+    d = -`WORD'd8; 
     #`CYCLE;
-    cr=`WORD'd7; 
-    verify(cr, $bits(cr), q, $bits(q));
+    er_q = -`WORD'd8; 
+    verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
+
+///// TEST CASE 4 /////
+
+    $display("\nTest Case %0d", tc++);
+    d = `WORD'h3456789ABCDEF012; 
+    #`CYCLE;
+    er_q = `WORD'h3456789ABCDEF012; 
+    verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `HEX);
+
+///// TEST CASE 5 /////
    
-    d=`WORD'd4; 
-    #(`CYCLE/5);
-    cr=`WORD'd3; 
-    verify(cr, $bits(cr), q, $bits(q));
-    
-    d=`WORD'd5; 
-    #(`CYCLE*4/5);
-    cr=`WORD'd5; 
-    verify(cr, $bits(cr), q, $bits(q));
-    
-    rst=1;
-    #(`CYCLE/2);
-    cr=`WORD'd6;
-    verify(cr, $bits(cr), q, $bits(q));
-
+    $display("\nTest Case %0d", tc++);
+    d = `WORD'd77; 
     #`CYCLE;
-    rst=0;
-    #(`CYCLE/2);
-    cr=`WORD'd5; 
-    verify(cr, $bits(cr), q, $bits(q));    
+    er_q = `WORD'd77; 
+    verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
 
+///// TEST CASE 6 /////
+   
+    $display("\nTest Case %0d", tc++);
+    d = `WORD'd4; 
+    #(`CYCLE/5);
+    er_q = `WORD'd77; 
+    verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
+
+///// TEST CASE 7 /////
+    
+    $display("\nTest Case %0d", tc++);
+    d = `WORD'd18; 
+    #(`CYCLE*4/5);
+    er_q = `WORD'd18; 
+    verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
+
+///// TEST CASE 8 /////
+    
+    $display("\nTest Case %0d", tc++);
+    #3;
+    rst = 1;
+    #1;
+    er_q = `WORD'd0;
+    verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
+
+///// TEST CASE 9 /////
+
+    $display("\nTest Case %0d", tc++);
+    #(`CYCLE/2);
+    rst = 0;
+    d = `WORD'd981;    
+    #(`CYCLE/2);
+    er_q = `WORD'd0; 
+    verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
+
+///// TEST CASE 10 /////
+
+    $display("\nTest Case %0d", tc++);
+    #(`CYCLE/2);
+    er_q = `WORD'd981; 
+    verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
+    
+///// TEST CASE 11 ///// 
+
+    $display("\nTest Case %0d", tc++);
+    #1;
     rst=1;
     #(`CYCLE/2);
-    cr=`WORD'd4;
-    verify(cr, $bits(cr), q, $bits(q));
-        
-    #2;
-    d=`WORD'd345;
-    cr=`WORD'd3;
-    verify(cr, $bits(cr), q, $bits(q));
+    er_q = `WORD'd0;
+    verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
 
-    #3;    
-    rst=0;
-    cr=`WORD'd2;
-    verify(cr, $bits(cr), q, $bits(q));
+///// TEST CASE 12 /////
+        
+    $display("\nTest Case %0d", tc++);
+    #2;
+    d = `WORD'd345;
+    er_q = `WORD'd0;
+    verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
+
+///// TEST CASE 13 /////
+
+    $display("\nTest Case %0d", tc++);
+    #2;    
+    rst = 0;
+    #1
+    er_q = `WORD'd0;
+    verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
+
+///// TEST CASE 14 /////
     
+    $display("\nTest Case %0d", tc++);
     #`CYCLE;    
-    cr=`WORD'd1;
-    verify(cr, $bits(cr), q, $bits(q));
+    er_q = `WORD'd345;
+    verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
     
     // Add an extra cycle delay so that we can see the results on the simulation
     #`CYCLE;

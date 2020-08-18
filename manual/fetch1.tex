@@ -55,13 +55,11 @@ If you don't specify anything for the port type, you will get a wire - it is the
 
 To help clarify this, please examine Figure~\ref{fig:modulediagram}, which shows the interconnection of the modules in this lab.
 
-The final section is the body or implementation.  It is composed of a single thread of code, that will keep running (hence always).  It will run one time every time there is a positive edge (0 to 1 transition) for either the clock or reset.  Reset has higher priority, so if reset is asserted the register is cleared (Q is set to zero), otherwise the value of D is stored it Q.  That is it.  A nice, simple module.  Please note that the provided register module is fully operational.  You do not need to modify it.
+The final section is the body or implementation.  It is composed of a single thread of code, that will keep running (hence always).  It will run one time every time there is a positive edge (0 to 1 transition) for either the clock or reset.  Reset has higher priority, so if reset is asserted the register is cleared (Q is set to zero), otherwise the value of D is stored it Q.  That is it.  A nice, simple module.  Please note that the provided register module is fully operational.  You do not need to modify it.  This file is provided for you in ARM-Lab/code/1\_fetch/register.v.
 
 \section{Testbench}
 
-We now want to test our register module using System Verilog.  System Verilog is very similar to Verilog, but it adds the ability to verify that we get the results that we are expecting.  To test the register module, we need to tell the simulator to build a copy (instantiate) of the register module, and then we will need to supply the inputs and evaluate the outputs to verify that the module works correctly.  Consider the testbench in Listing~\ref{code:register_test}.
-
-\Verilog{System Verilog code to test a register.}{code:register_test}{../code/1_fetch/register_test.sv}
+We now want to test our register module using System Verilog.  System Verilog is very similar to Verilog, but it adds the ability to verify that we get the results that we are expecting.  To test the register module, we need to tell the simulator to build a copy (instantiate) of the register module, and then we will need to supply the inputs and evaluate the outputs to verify that the module works correctly.  Evaluate the testbench, ARM-Lab/code/1\_fetch/register\_test.sv.
 
 When evaluating this testbench module (register\_test), notice that there are no ports.  A testbench is providing all the signals to simulate the inputs to the unit under test (UUT) and thus does not need ports.  This is how Verilog finds a top level simulation module - there are no ports.  The clock signal will be driven by a module named oscillator, which will give us a square wave with period CYCLE, which is another constant defined in our definitions.vh file.  The code thus makes an oscillator and a register, then runs the 'initial' section (it runs once at the start then never again).
 
@@ -69,35 +67,32 @@ This initial section of the testbench follows a relatively simple pattern:
 \begin{enumerate}
 	\item The inputs to the register module are set to particular values.
 	\item The system delays for some amount of time.  For instance, a one cycle delay is inserted with \#CYCLE.
-	\item The value of cr (correct result) is set to the output value that you expect to get from the register module.
-	\item The value and size of cr are compared with the value and size of ar (actual result).  The actual result is the output of your register module.  I provide (in "verification\_functions.sv", included at the top of the testbench) the verify function and a few other functions that allow us to easily verify the behavior of our system.  Each time verify is called, it keeps track of whether the test passed (ar == cr) or failed (ar != cr).
+	\item The value of er (expected result) is set to the output value that you expect to get from the register module.
+	\item The value and size of er are compared with the value and size of ar (actual result).  The actual result is the output of your register module.  I provide (in "verification\_functions.sv", included at the top of the testbench) the verify function and a few other functions that allow us to easily verify the behavior of our system.  Each time the 'verify' function is called, it reports and keeps track of whether the test passed (ar == er) or failed (ar != er).
 	\item At the end of the testbench, the final\_result function is called to report the results of the test.  This function will show the number of passing and failing test cases.
 \end{enumerate}  
 
-
-\begin{figure}
-\caption{Timing diagram.}\label{fig:registertiming}
-\begin{center}
-\includegraphics[width=4.75in]{../images/register_test_timing_diagram.png}
-\end{center}
-\end{figure}
 
 \section{Your Assignment}
 
 You are to:
 \begin{enumerate}
-\item Evaluate the testbench in Listing~\ref{code:register_test}.  It is not an exhaustive testbench, but it tests a number of cases that commonly occur in our system.  Note that you should not change the input values or timing of the testbench, nor should you add additional test cases to the testbench.
-\item Create an Expected Results Table for your testbench.  An example Expected Results Table is at ARM-Lab/testfiles/Lab1\_Register\_ExpectedResultsTable.xlsx.  The idea behind the Expected Results Table is that you identify how you think the system should operate.  If you don't know how it should work, you will not know whether your simulation results are correct.  The Expected Results Table should have a row for each signal in your simulation results (and the row order should match between your Expected Results Table and Simulation Results).  The table should also have a column for each test point in the testbench.  These test points are the points in time that correspond to the 'verify' function calls in the testbench.  To complete the table, fill in each cell with the expected value.  Note that you don't need to show the clk signal in the Expected Results Table.  See the Lab1 Expected Results Table Excel file in the testfiles section of my git repository.
-\item The provided testbench does not set the cr to the correct value, therefore causing your test to fail.  Your job now is to take the values from your expected results table and enter these values in the testbench as the cr (correct result).
-\item Run a behavioral simulation.  Evaluate the timing diagram and verify that it matches the Expected Results Table.  Also evaluate the printouts in the Tcl Console window in Vivado.  These printouts will indicate the number of passes and fails that occurred in the test.  If you chose the correct cr values and all tests pass, then your module is verified to work properly.   
-\item Rather than writing a lab report, please produce a landscape mode single page PDF called Lab1\_lastname.pdf that includes (in this order):
+\item Evaluate the provided testbench.  It is not an exhaustive testbench, but it tests a number of cases that commonly occur in our system.  Note that you should not change the input values or timing of the testbench, nor should you add additional test cases to the testbench.
+\item Create an Expected Results Table for your testbench.  The idea behind the Expected Results Table is that you should identify how you think the system should operate.  If you don't know how it should work, you will not know whether your simulation results are correct.  The Expected Results Table should have a row for each signal in your simulation results (and the row order should match between your Expected Results Table and Simulation Results).  The table should also have a column for each test case in the testbench.  These test cases are the points in time that correspond to the 'verify' function calls in the testbench.
+
+I have provided an Expected Results Table for Lab 1 in ARM-Lab/tables.  It includes everything you need, except that the row for er\_q is not filled in. Please fill in this row with the expected value of q for each test case.  Note that you don't need to show the clk signal in the Expected Results Table. 
+
+
+\item The provided testbench does not set er\_q to the correct value, therefore causing your test to fail.  Your job now is to take the values from your expected results table and enter these values in the testbench as er\_q (expected result of q).
+\item Run a behavioral simulation.  Evaluate the timing diagram and verify that it matches the Expected Results Table.  Also evaluate the printouts in the Tcl Console window in Vivado.  These printouts will indicate the number of passes and fails that occurred in the test.  If you chose the correct er values and all tests pass, then your module is verified to work properly.   
+\item Produce a landscape mode PDF called Lab1\_lastname.pdf that includes (in this order):
 	\begin{enumerate}
 		\item Your name and the lab number.
 		\item A snip (using the Snipping Tool) of your Expected Results Table.
-		\item A snip of the Simulation Results.  Make sure to show all values in decimal form and don't cut off the signal names on the left.  
-		\item A snip of the test results from the Tcl Console.  This snip should show the entire log from BEGIN TEST RESULTS to END TEST RESULTS.
-		\item I have included a sample in the testfiles directory of my git repository. 
+		\item A snip of the Simulation Results (the black window that shows each signal).  Make sure to show all values in decimal form and don't cut off the signal names on the left.  
+		\item The test results copied and pasted from the Tcl Console.  The results should show the entire log from BEGIN TEST RESULTS to END TEST RESULTS.
+		\item I have included a sample, ARM-Lab/reports/Lab1\_Potter.pdf to give you an idea of what I'm looking for. 
 	\end{enumerate}
 \item Upload Lab1\_lastname.pdf file to Canvas.
-\item Zip up your ARM-Lab directory and submit it on Canvas as well.  I will run your code against my correct testbench to verify that your code and testbench work correctly.  Since I give you working register.v code in this lab, this is pretty easy.  In future labs, you must create your own module code.
+\item Zip up your ARM-Lab directory and submit it on Canvas as well.  Please make sure that you give me the ARM-Lab directory rather than the ARM-Project directory.  I do not want the project files in the ARM-Project directory.  Before you submit your zip file, make sure that it contains directories like code, manual, tables, etc.  I will extract your zip file and run your code against my correct testbench to verify that your code and testbench work correctly.  Since I give you working register.v code in this lab, this is pretty easy.  In future labs, you must create your own module code.
 \end{enumerate} 
