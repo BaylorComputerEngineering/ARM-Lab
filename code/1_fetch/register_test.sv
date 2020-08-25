@@ -85,6 +85,7 @@ begin
     // the verify function compares the value of er to the value
     // of ar (actual result, see function definition).  It also 
     // compares the size of ar and er 
+    $display("Inputs: rst = %0d | d = %0d", rst, $signed(d)); 
     verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
 
 ///// TEST CASE 2 /////
@@ -94,7 +95,8 @@ begin
     $display("\nTest Case %0d", tc++);    
     d = `WORD'd527; 
     #`CYCLE;
-    er_q = `WORD'dX; 
+    er_q = `WORD'dX;
+    $display("Inputs: rst = %0d | d = %0d", rst, $signed(d)); 
     verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
 
 ///// TEST CASE 3 /////
@@ -103,6 +105,7 @@ begin
     d = -`WORD'd8; 
     #`CYCLE;
     er_q = -`WORD'dX; 
+    $display("Inputs: rst = %0d | d = %0d", rst, $signed(d)); 
     verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
 
 ///// TEST CASE 4 /////
@@ -111,6 +114,7 @@ begin
     d = `WORD'h3456789ABCDEF012; 
     #`CYCLE;
     er_q = `WORD'hX; 
+    $display("Inputs: rst = %0d | d = %0d", rst, $signed(d)); 
     verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `HEX);
 
 ///// TEST CASE 5 /////
@@ -119,6 +123,7 @@ begin
     d = `WORD'd77; 
     #`CYCLE;
     er_q = `WORD'dX; 
+    $display("Inputs: rst = %0d | d = %0d", rst, $signed(d)); 
     verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
 
 ///// TEST CASE 6 /////
@@ -127,6 +132,7 @@ begin
     d = `WORD'd4; 
     #(`CYCLE/5);
     er_q = `WORD'dX; 
+    $display("Inputs: rst = %0d | d = %0d", rst, $signed(d)); 
     verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
 
 ///// TEST CASE 7 /////
@@ -135,6 +141,7 @@ begin
     d = `WORD'd18; 
     #(`CYCLE*4/5);
     er_q = `WORD'dX; 
+    $display("Inputs: rst = %0d | d = %0d", rst, d); 
     verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
 
 ///// TEST CASE 8 /////
@@ -144,6 +151,7 @@ begin
     rst = 1;
     #1;
     er_q = `WORD'dX;
+    $display("Inputs: rst = %0d | d = %0d", rst, $signed(d)); 
     verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
 
 ///// TEST CASE 9 /////
@@ -154,6 +162,7 @@ begin
     d = `WORD'd981;    
     #(`CYCLE/2);
     er_q = `WORD'dX; 
+    $display("Inputs: rst = %0d | d = %0d", rst, $signed(d)); 
     verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
 
 ///// TEST CASE 10 /////
@@ -161,6 +170,7 @@ begin
     $display("\nTest Case %0d", tc++);
     #(`CYCLE/2);
     er_q = `WORD'dX; 
+    $display("Inputs: rst = %0d | d = %0d", rst, $signed(d)); 
     verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
     
 ///// TEST CASE 11 ///// 
@@ -170,6 +180,7 @@ begin
     rst=1;
     #(`CYCLE/2);
     er_q = `WORD'dX;
+    $display("Inputs: rst = %0d | d = %0d", rst, $signed(d)); 
     verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
 
 ///// TEST CASE 12 /////
@@ -178,6 +189,7 @@ begin
     #2;
     d = `WORD'd345;
     er_q = `WORD'dX;
+    $display("Inputs: rst = %0d | d = %0d", rst, $signed(d)); 
     verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
 
 ///// TEST CASE 13 /////
@@ -187,6 +199,7 @@ begin
     rst = 0;
     #1
     er_q = `WORD'dX;
+    $display("Inputs: rst = %0d | d = %0d", rst, $signed(d)); 
     verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
 
 ///// TEST CASE 14 /////
@@ -194,6 +207,7 @@ begin
     $display("\nTest Case %0d", tc++);
     #`CYCLE;    
     er_q = `WORD'dX;
+    $display("Inputs: rst = %0d | d = %0d", rst, $signed(d)); 
     verify(ts, q_string, er_q, $bits(er_q), q, $bits(q), `S_DEC);
     
     // Add an extra cycle delay so that we can see the results on the simulation
