@@ -1,0 +1,23 @@
+\chapter{Integrating Fetch and Decode}
+
+This lab will integrate the iFetch module with the iDecode module to make a single testbench that will verify that they function properly together.  The result will be a system that automatically fetches instructions and then decodes the fetched instruction.  To do this, you will update the provided fd\_integration.sv to include an instance of both the iFetch module and the iDecode module.  The instruction output from the fetch module should be connected to the instruction input in the decode module.  
+
+You will also need to thoroughly test the outputs of each stage.  Refer back to your iFetch\_test.sv and iDecode\_test.sv files to identify what you need to test.  You will need to verify every item that you verified in each of those previous tests.  We will be using the instructions and expected values from the Expected Results Table in the iDecode lab.  Note that this time, rather than providing the instructions in the testbench, the iFetch module should provide the instructions.  This means that you will need to update instrData.data with the 10 instructions from the Expected Results Table.  Make sure to also verify the cur\_pc and instruction outputs of the iFetch module.  Overall, the tests should have 139 steps.  119 come from the iDecode signals and 20 come from the iFetch signals.
+
+
+\section{Your Assignment}
+
+You are to:
+\begin{enumerate}
+\item Update the provided fd\_integration.sv by instantiating iFetch and iDecode modules.  Also, update fd\_integration.sv with values from the Expected Results Table and with expected outputs from iFetch. 
+\item Verify that your simulation results match your expected results.
+\item Rather than writing a lab report, please produce a landscape mode PDF file called Lab7\_lastname.pdf that includes (in this order):
+\begin{enumerate}
+	\item Your name and the lab number.
+	\item A snip of your completed Expected Results Table.
+	\item A snip of the Simulation Results for the fd\_integration test.  Please show instructions in hex, opcodes and control signals in binary and everything else in signed decimal.  
+	\item Copy and paste the entire log from BEGIN TEST RESULTS to END TEST RESULTS into your file.  The results have gotten too long to use the snipping tool.	
+\end{enumerate}
+\item Upload Lab7\_lastname.pdf file to Canvas.
+\item Zip up your ARM-Lab directory and submit it on Canvas as well.  I will run your code against my correct testbench to verify that your code and testbench work correctly.
+\end{enumerate} 
