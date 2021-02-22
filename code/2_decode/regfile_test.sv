@@ -110,7 +110,7 @@ begin
 
     // write to register 15 and check the value of registers 0 and 15
     write_register = 5'd15;    
-    write_data = -`WORD'dX;        
+    write_data = -`WORD'd354;
     #16;    
 
     $display("\nTest Case 6: | rr_1 = %0d | rr_2 = %0d | | wr = %0d | | wd = %0d | rw = %0d |", read_register1, read_register2, write_register, $signed(write_data), reg_write);        
@@ -122,7 +122,7 @@ begin
     
     // set reg_write back to 0, change write_data, and verify that the registers do not update   
     reg_write = 1'd0;
-    write_data =  `WORD'dX;
+    write_data =  `WORD'd23456;
     #(`CYCLE*2);
 
     $display("\nTest Case 7: | rr_1 = %0d | rr_2 = %0d | | wr = %0d | | wd = %0d | rw = %0d |", read_register1, read_register2, write_register, $signed(write_data), reg_write);        
