@@ -66,7 +66,7 @@ When evaluating this testbench module (register\_test), notice that there are no
 This initial section of the testbench follows a relatively simple pattern:
 \begin{enumerate}
 	\item The inputs to the register module are set to particular values.
-	\item The system delays for some amount of time.  For instance, a one cycle delay is inserted with \#CYCLE.
+	\item The system delays for some amount of time.  For instance, a one cycle delay (10ns) is inserted with \#CYCLE.  When analyzing the system, please note that the clock signal has rising edges at t=5,15,25,35,etc.
 	\item The value of er (expected result) is set to the output value that you expect to get from the register module.
 	\item The value and size of er are compared with the value and size of ar (actual result).  The actual result is the output of your register module.  I provide (in "verification\_functions.sv", included at the top of the testbench) the verify function and a few other functions that allow us to easily verify the behavior of our system.  Each time the 'verify' function is called, it reports and keeps track of whether the test passed (ar == er) or failed (ar != er).
 	\item At the end of the testbench, the final\_result function is called to report the results of the test.  This function will show the number of passing and failing test cases.
