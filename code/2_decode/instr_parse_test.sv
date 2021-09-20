@@ -5,7 +5,7 @@ import verification::*;
 
 // create signals to be be passed into/out of the instruction_parse module
 
-// create cr signals that have the same names of the signals above except that they
+// create er signals that have the same names of the signals above except that they
 // have er_ appended to the beginning of the name....for example, er_rm_num
 
 // use this instruction_parse instance for this test
