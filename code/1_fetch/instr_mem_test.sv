@@ -22,7 +22,7 @@ instr_mem #(64) UUT (
     );
 
 
-reg [`INSTR_LEN-1:0] cr;
+reg [`INSTR_LEN-1:0] er;
 string instr_string = "|instruction|";
 int tc = 1;
 int ts = 1;
@@ -36,57 +36,57 @@ begin
     $display("Test Case %0d", tc++);
     pc = `WORD'd0;
     #`CYCLE;
-    cr = `INSTR_LEN'hABCDEF12;
-    verify(ts, instr_string, cr, $bits(cr), instr, $bits(instr), `HEX);
+    er = `INSTR_LEN'hABCDEF12;
+    verify(ts, instr_string, er, $bits(er), instr, $bits(instr), `HEX);
     
     ///// TEST CASE 2 /////
     $display("Test Case %0d", tc++);
     pc = `WORD'd4;
     #`CYCLE;
-    cr = `INSTR_LEN'hBCDEF123;
-    verify(ts, instr_string, cr, $bits(cr), instr, $bits(instr), `HEX);
+    er = `INSTR_LEN'hBCDEF123;
+    verify(ts, instr_string, er, $bits(er), instr, $bits(instr), `HEX);
        
     ///// TEST CASE 3 /////
     $display("Test Case %0d", tc++);    
     pc = `WORD'd8;
     #8;    
-    cr = `INSTR_LEN'hCDEF1234;
-    verify(ts, instr_string, cr, $bits(cr), instr, $bits(instr), `HEX);
+    er = `INSTR_LEN'hCDEF1234;
+    verify(ts, instr_string, er, $bits(er), instr, $bits(instr), `HEX);
     
     ///// TEST CASE 4 /////
     $display("Test Case %0d", tc++);    
     pc = `WORD'd12;
     #4;    
-    cr = `INSTR_LEN'hCDEF1234;
-    verify(ts, instr_string, cr, $bits(cr), instr, $bits(instr), `HEX);
+    er = `INSTR_LEN'hCDEF1234;
+    verify(ts, instr_string, er, $bits(er), instr, $bits(instr), `HEX);
     
     ///// TEST CASE 5 /////
     $display("Test Case %0d", tc++);    
     pc = `WORD'd16;
     #4;   
-    cr = `INSTR_LEN'hEF123456;
-    verify(ts, instr_string, cr, $bits(cr), instr, $bits(instr), `HEX);
+    er = `INSTR_LEN'hEF123456;
+    verify(ts, instr_string, er, $bits(er), instr, $bits(instr), `HEX);
 
     ///// TEST CASE 6 /////
     $display("Test Case %0d", tc++);
     pc = `WORD'd52;
     #`CYCLE;
-    cr = `INSTR_LEN'h89ABCDEF;
-    verify(ts, instr_string, cr, $bits(cr), instr, $bits(instr), `HEX);
+    er = `INSTR_LEN'h89ABCDEF;
+    verify(ts, instr_string, er, $bits(er), instr, $bits(instr), `HEX);
 
     ///// TEST CASE 7 /////
     $display("Test Case %0d", tc++);
     pc = `WORD'd56;
     #`CYCLE;
-    cr = `INSTR_LEN'h9ABCDEF1;
-    verify(ts, instr_string, cr, $bits(cr), instr, $bits(instr), `HEX);
+    er = `INSTR_LEN'h9ABCDEF1;
+    verify(ts, instr_string, er, $bits(er), instr, $bits(instr), `HEX);
 
     ///// TEST CASE 8 /////
     $display("Test Case %0d", tc++);
     pc = `WORD'd28;
     #`CYCLE;
-    cr = `INSTR_LEN'h23456789;
-    verify(ts, instr_string, cr, $bits(cr), instr, $bits(instr), `HEX);
+    er = `INSTR_LEN'h23456789;
+    verify(ts, instr_string, er, $bits(er), instr, $bits(instr), `HEX);
 
     final_result();
        
