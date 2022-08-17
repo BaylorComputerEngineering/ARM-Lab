@@ -1,0 +1,37 @@
+\chapter{Program Execution}
+
+\section{Division}
+To fully verify your LEGv8 processor, we are going to write a program that can divide two numbers, run that program and verify that we get the correct result.  The program that we will run is shown in the file division.c, shown below.  At the top of that file, I've listed some rules about the contents of the regData file and the ramData file.  I have included the assembly code for this simple division algorithm.  You will need to translate this assembly code into machine code.  We will use new testfiles for this program, so you need to create the following files in ARM-Lab/testfiles:
+\begin{enumerate}
+	\item instrData\_division.data - this file should contain the machine code for this division program 
+	\item regData\_division.data - you must set all register values in regData\_division.data to 0 except for A22, which should be set to 24.  This value is the base address of the array A.  This is the only non-zero value allowed in regData.  
+	\item ramData\_division -  this file should have all values set to 0 except for the values of A[0], A[1], A[2], and A[3].  Please set the dividend to 56 and the divisor to 8.  The quotient is initially set to 0.  A[3] is set to 1.  This is necessary because we do not have immediate instructions in our processor.
+\end{enumerate}
+
+To verify operation, you should create a final test bench (division.sv) that is the same as datapath.sv except that it allows pc\_src to be set by the iMemory module rather than keeping it hard-coded to 0 with pc\_src\_tmp.  These instructions are meant to run as a program and correct branch decisions are vital to its operation.  
+
+The test bench verification is very simple.  It has only one test step, which verifies the value that is being stored by the final instruction.  Given that we are calculating 56/8, the result should be 7.  Rather than verifying hundreds of steps along the way (which we've already done), we will very simply check to see if the division works by checking the value of read\_data2 in the final instruction (STUR). Note that this single verify needs to occur at time=345ns.  
+
+Feel free to also modify ramData\_division.data to use a different dividend and divisor and try out other calculations...but make sure that they are divisible.  57/8 (or anything like that) will not work properly, as it will never break out of the loop.
+
+\Verilog{C code for doing simple division.}{code:division}{../code/division.c}
+\Verilog{Assembly code for doing simple division.}{code:division_assembly}{../code/division_assembly.txt}
+
+
+\section{Your Assignment}
+
+You are to:
+\begin{enumerate}
+	\item Create and update division.sv.
+	\item Run the simulation, analyze the results and verify that the divison works correctly.
+	\item Rather than writing a lab report, please produce a landscape mode PDF file called Lab12\_lastname.pdf that includes (in this order):
+	\begin{enumerate}
+		\item Your name and the lab number.
+		\item A snip of the Simulation Results for division.sv.  Please show instructions in hex, opcodes and control signals in binary and everything else in signed decimal.  
+		\item Copy and paste the entire log for both datapath.sv and division.sv from BEGIN TEST RESULTS to END TEST RESULTS into your file.  The results have gotten too long to use the snipping tool.	
+	\end{enumerate}
+\item Upload Lab12\_lastname.pdf file to Canvas.
+\item Zip up your ARM-Lab directory and submit it on Canvas as well.  Please make sure that you give me the ARM-Lab directory rather than the ARM-Project directory.  I do not want the project files in the ARM-Project directory.  Before you submit your zip file, extract the file and make sure that the top-level directory is called ARM-Lab and that the lower level directories like code, manual, etc are directly beneath ARM-Lab in the directory structure.  I will extract your zip file and run your code against my correct testbench to verify that your code and testbench work correctly, and it is critical that everyone's directory structure is consistent.
+\end{enumerate} 
+
+CONGRATULATIONS!  YOU'VE JUST BUILT A SIMPLE ARMv8 PROCESSOR!!!!
