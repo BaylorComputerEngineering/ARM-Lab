@@ -36,7 +36,7 @@ The Verilog implementation between 'if/else' statements and 'case' statements di
 	\item ALUOp\_CBZ
 \end{enumerate} 
 
-The default case should set all control signals to 0 to "turn off" the datapath in case of an invalid opcode.  The ALU Op should be R Type.
+The default case should set all control signals (including alu\_op) to 0 to "turn off" the datapath in case of an invalid opcode.  For the B type instruction, uncondbranch should be set to 1, but all other control signals (including alu\_op) should be set to 0.
 
 \begin{figure}
 	\caption{Control Value Table}\label{fig:control_value_table}
