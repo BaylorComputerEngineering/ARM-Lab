@@ -11,7 +11,7 @@ import verification::*;
 // declare a test case variable to clearly indicate which
 // test case is being run
 // this variable will be incremented after each test case
-int tc = 1;
+int tc = 0;
 
 // declare a test case variable to clearly indicate which
 // test step is being run
@@ -66,7 +66,7 @@ begin
     begin_test();
 
 ///// TEST CASE 1 /////
-    $display("Test Case %0d", tc++);
+    $display("Test Case %0d", ++tc);
 
     // set the reset pin to 0
     rst = 0;
@@ -92,7 +92,7 @@ begin
   
     // repeat the previous steps using different input values and 
     // different delays
-    $display("\nTest Case %0d", tc++);    
+    $display("\nTest Case %0d", ++tc);    
     d = `WORD'd527; 
     #`CYCLE;
     er_q = `WORD'dX;
@@ -101,7 +101,7 @@ begin
 
 ///// TEST CASE 3 /////
 
-    $display("\nTest Case %0d", tc++);
+    $display("\nTest Case %0d", ++tc);
     d = -`WORD'd8; 
     #`CYCLE;
     er_q = -`WORD'dX; 
@@ -110,7 +110,7 @@ begin
 
 ///// TEST CASE 4 /////
 
-    $display("\nTest Case %0d", tc++);
+    $display("\nTest Case %0d", ++tc);
     d = `WORD'h3456789ABCDEF012; 
     #`CYCLE;
     er_q = `WORD'hX; 
@@ -119,7 +119,7 @@ begin
 
 ///// TEST CASE 5 /////
    
-    $display("\nTest Case %0d", tc++);
+    $display("\nTest Case %0d", ++tc);
     d = `WORD'd77; 
     #`CYCLE;
     er_q = `WORD'dX; 
@@ -128,7 +128,7 @@ begin
 
 ///// TEST CASE 6 /////
    
-    $display("\nTest Case %0d", tc++);
+    $display("\nTest Case %0d", ++tc);
     d = `WORD'd4; 
     #(`CYCLE/5);
     er_q = `WORD'dX; 
@@ -137,7 +137,7 @@ begin
 
 ///// TEST CASE 7 /////
     
-    $display("\nTest Case %0d", tc++);
+    $display("\nTest Case %0d", ++tc);
     d = `WORD'd18; 
     #(`CYCLE*4/5);
     er_q = `WORD'dX; 
@@ -146,7 +146,7 @@ begin
 
 ///// TEST CASE 8 /////
     
-    $display("\nTest Case %0d", tc++);
+    $display("\nTest Case %0d", ++tc);
     #3;
     rst = 1;
     #1;
@@ -156,7 +156,7 @@ begin
 
 ///// TEST CASE 9 /////
 
-    $display("\nTest Case %0d", tc++);
+    $display("\nTest Case %0d", ++tc);
     #(`CYCLE/2);
     rst = 0;
     d = `WORD'd981;    
@@ -167,7 +167,7 @@ begin
 
 ///// TEST CASE 10 /////
 
-    $display("\nTest Case %0d", tc++);
+    $display("\nTest Case %0d", ++tc);
     #(`CYCLE/2);
     er_q = `WORD'dX; 
     $display("Inputs: rst = %0d | d = %0d", rst, $signed(d)); 
@@ -175,7 +175,7 @@ begin
     
 ///// TEST CASE 11 ///// 
 
-    $display("\nTest Case %0d", tc++);
+    $display("\nTest Case %0d", ++tc);
     #1;
     rst=1;
     #(`CYCLE/2);
@@ -185,7 +185,7 @@ begin
 
 ///// TEST CASE 12 /////
         
-    $display("\nTest Case %0d", tc++);
+    $display("\nTest Case %0d", ++tc);
     #2;
     d = `WORD'd345;
     er_q = `WORD'dX;
@@ -194,7 +194,7 @@ begin
 
 ///// TEST CASE 13 /////
 
-    $display("\nTest Case %0d", tc++);
+    $display("\nTest Case %0d", ++tc);
     #2;    
     rst = 0;
     #1
@@ -204,7 +204,7 @@ begin
 
 ///// TEST CASE 14 /////
     
-    $display("\nTest Case %0d", tc++);
+    $display("\nTest Case %0d", ++tc);
     #`CYCLE;    
     er_q = `WORD'dX;
     $display("Inputs: rst = %0d | d = %0d", rst, $signed(d)); 
