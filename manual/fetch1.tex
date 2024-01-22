@@ -80,7 +80,7 @@ You are to:
 \item Evaluate the provided testbench.  It is not an exhaustive testbench, but it tests a number of cases that commonly occur in our system.  Note that you should not change the input values or timing of the testbench, nor should you add additional test cases to the testbench.
 \item Create an Expected Results Table for your testbench.  The idea behind the Expected Results Table is that you should identify how you think the system should operate.  If you don't know how it should work, you will not know whether your simulation results are correct.  The Expected Results Table should have a row for each signal in your simulation results (and the row order should match between your Expected Results Table and Simulation Results).  The table should also have a column for each test case in the testbench.  These test cases are the points in time that correspond to the 'verify' function calls in the testbench.
 
-I have provided an Expected Results Table for Lab 1 in ARM-Lab/tables.  It includes everything you need, except that the row for er\_q is not filled in. Please fill in this row with the expected value of q for each test case.  Note that you don't need to show the clk signal in the Expected Results Table. 
+I have provided an Expected Results Table for Lab 1 in ARM-Lab/tables.  It includes everything you need, except that the row for er\_q is not filled in. Please fill in this row with the expected value of q for each test case. 
 
 
 \item The provided testbench does not set er\_q to the correct value, therefore causing your test to fail.  Your job now is to take the values from your expected results table and enter these values in the testbench as er\_q (expected result of q).
@@ -88,10 +88,8 @@ I have provided an Expected Results Table for Lab 1 in ARM-Lab/tables.  It inclu
 \item Produce a landscape mode PDF called Lab1\_lastname.pdf that includes (in this order):
 	\begin{enumerate}
 		\item Your name and the lab number.
-		\item A snip (using the Snipping Tool) of your Expected Results Table.
 		\item A snip of the Simulation Results (the black window that shows each signal).  Make sure to show all values in decimal form and don't cut off the signal names on the left.  
 		\item The test results copied and pasted from the Tcl Console.  The results should show the entire log from BEGIN TEST RESULTS to END TEST RESULTS.
-		\item I have included a sample, ARM-Lab/reports/Lab1\_Potter.pdf to give you an idea of what I'm looking for. 
 	\end{enumerate}
 \item Upload Lab1\_lastname.pdf file to Canvas.
 \item Zip up your ARM-Lab directory and submit it on Canvas as well.  Please make sure that you give me the ARM-Lab directory rather than the ARM-Project directory.  I do not want the project files in the ARM-Project directory.  Before you submit your zip file, extract the file and make sure that the top-level directory is called ARM-Lab and that the lower level directories like code, manual, etc are directly beneath ARM-Lab in the directory structure.  I will extract your zip file and run your code against my correct testbench to verify that your code and testbench work correctly, and it is critical that everyone's directory structure is consistent.  Since I give you working register.v code in this lab, this is pretty easy.  In future labs, you must create your own module code.
