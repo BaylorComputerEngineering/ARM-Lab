@@ -1,26 +1,51 @@
 \chapter{Pipelining without Branching or Forwarding}
 
-
 \section{Overview}
-Now that we have pipelined the fetch and decode stages, we can add the register buffers between each stage and get a simple pipeline working.  This pipeline will not include any data forwarding or branch prediction.  We will handle data hazards by using assembly code with appropriately placed nop commands.  For now, we will avoid control hazards by keeping pc\_src set to 0, which will keep the system from branching (even when you run a branch instruction).  
+Now that we have a working single-cycle datapath, we are going to break it apart and start pipelining it.  One of the challenges with pipelining is that we need to make sure to keep the correct signal values associated with the correct instruction.  For instance, at any given time, there can be 4 different versions of reg\_to\_loc.  There is a version of reg\_to\_loc for the instruction that is currently running in Decode, Execute, Memory, and WriteBack.  reg\_to\_loc is produced in the Decode stage, but the Execute, Memory, and WriteBack stages each use a buffered version of the signal that is stored in the stage buffer (the vertical bars between stages).    
 
-Only after you have completed the spreadsheet, then you can move on to writing Verilog code.  You will want to update datapath.v to use the names from the spreadsheet.  This will include adding a lot of new signals.  Then you will want to update your modules to account for these new signals.  Use your spreadsheet to make the following updates:
+\section{Pipeline Fetch and Decode}
+The first goal for your pipeline is to get a series of instructions to execute the Fetch and Decode stages in pipeline form, where a new instruction is fetched while the previous instruction is being decoded.  I have provided a testbench, pipeline\_fetch\_decode.sv, that executes the first 3 instructions from your Expected Results Table (LDUR, ADD, SUB).  This testbench looks a little bit different b/c it is labeled by Clock Cycle rather than instruction.  This is because there are multiple instructions executing in any given clock cycle.  Rather than describing the details here, I've provided comments in the testbench that should help.  Another difference is that I do not expect all test cases to pass.  There should be 30 passes and 1 fail. The test step that should fail is the read\_data2 in clock cycle 3.  Do not try to fix the fail.  Accept it and move on....there is a lot required to get that test step to work.    
+
+To get the testbench working to this level, there are several modifications required.
 \begin{enumerate}
-	\item Add input ports to stage modules as needed.  This will be particularly relevant for signals that are passed through.  You should not use the \_id, \_ie, etc naming convention within the module.  You should either use no suffix or the suffix \_in or \_out.
-	\item Update all modules to buffer all inputs into the module.  This will keep inputs from changing while they are being used.  On the positive edge of the clock, you should use procedural assignments to copy all inputs into another register (reg).  This register can either be an output reg (when appropriate) or a local reg (if the signal does not need to be output).  Then do all of the module's processing on the buffered regs.  Try to change as few names as possible within the modules.  Use names that keep you from having to update your signal names to the lower level modules.  In modules that do not currently have a clock, you will need to add the clock.
-	\item Use the information in the spreadsheet to add output ports to stage modules as needed. 
+	\item Since we do not need 10ns to complete a single stage, please change the CYCLE macro in definitions.vh to 4 so that our new cycle time will be 4ns.  
+	\item Update the port list in iDecode.v to match the testbench.  In addition to additional ports, there is also a naming convention change.  All input ports (except for clk signals) should be have \_in appended to the end of the name.
+	\item Update iDecode.v to buffer instruction\_in and cur\_pc\_in so that they do not change while you are using them in iDecode.  To try to make it as simple as possible, please buffer them into internal signals called instruction and cur\_pc.  This will avoid you having to change signal names in your lower-level module instantiations.
 \end{enumerate}
-Again, try to change as few names as possible within the modules.  You want to use the stage-specific names (\_ie, etc) in datapath.v rather than in the modules, to the extent possible.
 
-Use the instructions from your Expected Results Table to test your pipeline.  Insert NOP instructions where appropriate in your instrData.data.  To insert a NOP instruction, add a 32-bit line with all zeros.
+
+\section{Design}
+The next step in developing your pipeline is to add the stage buffers to the rest of the stages.  The idea here is that every input to a stage must be buffered so that the value of the input you are using does not change while you are using it.  The code for this is not complex, but the planning and thought process can be complex because some signals need to be passed through to future stages.  Remember, you should not have signals that go directly from Decode to Memory, for example.  If you do, the data will be incorrect due to timing issues.  To aid your efforts, I require that you complete the PipelineAnalysisTemplate.xlsx.  This allows you to figure out what signals need to be passed between stages and develops a naming convention that will help you when you start implementing. 
+
+In the spreadsheet, you should start with my template, which has many (not all) of the signals that are in your datapath.  Look at your current connections in datapath.sv.  Wherever you see an output from a module, put that in the spreadsheet as a source.  Wherever you see an input to a module, put that in the spreadsheet as a destination.  In many cases, you will see that there is space in the spreadsheet between the source and destination.  This means that the signal must be buffered and forwarded from one stage to the next.  Fill in the space between the source and destination with signals to be forwarded.  Please use the naming convention that I show on the spreadsheet....this might be the most crucial part.  The signal names should match your current signal names, but they should have a suffix added to them that indicates which stage outputted the data.  For instance, when mem\_to\_reg was buffered in iExecute and forwarded to iMemory, the signal should be name mem\_to\_reg\_ie because iExecute outputs the data. 
+
+\section{Pipeline Implementation}
+Now that we have pipelined the fetch and decode stages and completed the spreadsheet, we can pipeline the rest of the stages.  This pipeline will not include any data forwarding, data hazard detection, or branching of any kind.  We will handle data hazards by using assembly code with appropriately placed nop commands.  We will avoid control hazards by keeping pc\_src set to 0, which will keep the system from branching (even when you run a branch instruction).  
+
+I have provided pipeline.sv for you, but it is incomplete.  To complete it, you will need to add instances of your stage modules and complete the test bench.  I have included all signals and strings that you will need, and I have already completed the first part of the test bench.  The first step is to add your module instances at the TODO and then run the completed part of the testbench.  It should provide 61 passes and 0 fails if your modules are correct.  I've included my results in pipeline\_starter\_log\_file.txt in ARM-Lab/code.  When adding your module instances, use the signal names from the spreadsheet.  Then you will want to update your modules themselves to account for these new signals.  Use your spreadsheet to make the following updates:
+\begin{enumerate}
+	\item Add input ports to stage modules as needed.  This will be particularly relevant for signals that are passed through.  You should not use the \_id, \_ie, etc naming convention within the module.  For inputs signals, you should use the suffix \_in.
+	\item Update all modules to buffer all inputs into the module.  This will keep inputs from changing while they are being used.  On the positive edge of the clock, you should use procedural assignments to copy all inputs into another register (reg).  This register can either be an output reg (when appropriate) or a local reg (if the signal does not need to be output).  Then do all of the module's processing on the buffered regs.  Try to change as few names as possible within the modules.  Use names that keep you from having to update your signal names to the lower level modules.  In modules that do not currently have a clock, you will need to add the clock.
+	\item Use the information in the spreadsheet to add output ports to stage modules as needed. Output port names should have no suffix.
+\end{enumerate}
+
+
+The last part of this lab is to complete the the testbench part of pipeline.sv.  You need to add code below the TODO.  Please do not modify the code above the TODO. For testing, we will run the first 4 instructions from your Expected Results Table all the way to completion (the STUR instruction should complete the WriteBack stage).  In order to keep this from getting too lengthy, we will not test the rest of the instructions.  Insert NOP instructions where appropriate in your instrData.data.  To insert a NOP instruction, add a 32-bit line with all zeros.  To get the system working completely, you will need to make a few additional modifications to account for the "right to left" signals indicated in the spreadsheet.
 
 \section{Your Assignment}
 
 You are to:
 \begin{enumerate}
-\item Implement the spreadsheet in your datapath.v
-\item Update your modules to buffer the appropriate values into registers
-\item Use your expected results table instructions to test the pipeline and correct any issues
-\item Once your pipeline is working, go back and try to reduce the cycle time as much as possible (without having to re-architect your solution).
-\item Submit a lab report using the PipelineLabWriteup format.  This is a new format that has been uploaded to my Git repository.
+\item Pipeline fetch and decode as described above in pipeline\_fetch\_decode.sv.
+\item Complete PipelineAnalysisTemplate.xlsx
+\item Finish the provided pipeline.sv as described above.
+\item Rather than writing a lab report, please produce a landscape mode PDF file called Lab13\_lastname.pdf that includes (in this order):
+\begin{enumerate}
+	\item Your name and the lab number.
+	\item A snip of your completed Expected Results Table.
+	\item A snip of the Simulation Results for the pipeline\_fetch\_decode test and for the full pipeline test.  Please show instructions in hex, opcodes and control signals in binary and everything else in signed decimal.  
+	\item Copy and paste the entire log from BEGIN TEST RESULTS to END TEST RESULTS into your file.  The results have gotten too long to use the snipping tool.	
+\end{enumerate}
+\item Upload Lab13\_lastname.pdf file to Canvas.
+\item Zip up your ARM-Lab directory and submit it on Canvas as well.  Please make sure that you give me the ARM-Lab directory rather than the ARM-Project directory.  I do not want the project files in the ARM-Project directory.  Before you submit your zip file, extract the file and make sure that the top-level directory is called ARM-Lab and that the lower level directories like code, manual, etc are directly beneath ARM-Lab in the directory structure.  I will extract your zip file and run your code against my correct testbench to verify that your code and testbench work correctly, and it is critical that everyone's directory structure is consistent.
 \end{enumerate} 

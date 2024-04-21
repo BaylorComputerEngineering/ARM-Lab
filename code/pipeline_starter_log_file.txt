@@ -1,0 +1,103 @@
+*** Clock Cycle 1 ***
+
+Fetch - LDUR X9, [X22, #64]
++++ Step 1: Pass: |cur_pc_if| time = 5 ns | er = 0 | ar = 0 | er_bits = 64 | ar_bits = 64 +++
++++ Step 2: Pass: |instruction_if| time = 5 ns | er = f84402c9 | ar = f84402c9 | er_bits = 32 | ar_bits = 32 +++
+
+*** Clock Cycle 2 ***
+
+Fetch - NOP
++++ Step 1: Pass: |cur_pc_if| time = 9 ns | er = 4 | ar = 4 | er_bits = 64 | ar_bits = 64 +++
++++ Step 2: Pass: |instruction_if| time = 9 ns | er = 0 | ar = 0 | er_bits = 32 | ar_bits = 32 +++
+
+Decode - LDUR X9, [X22, #64]
++++ Step 1: Pass: |cur_pc_id| time = 9 ns | er = 0 | ar = 0 | er_bits = 64 | ar_bits = 64 +++
++++ Step 2: Pass: |opcode_id| time = 9 ns | er = 11111000010 | ar = 11111000010 | er_bits = 11 | ar_bits = 11 +++
++++ Step 3: Pass: |sign_extended_output_id| time = 9 ns | er = 40 | ar = 40 | er_bits = 64 | ar_bits = 64 +++
++++ Step 4: Pass: |reg2_loc_id| time = 9 ns | er = 0 | ar = 0 | er_bits = 1 | ar_bits = 1 +++
++++ Step 5: Pass: |uncondbranch_id| time = 9 ns | er = 0 | ar = 0 | er_bits = 1 | ar_bits = 1 +++
++++ Step 6: Pass: |branch_id| time = 9 ns | er = 0 | ar = 0 | er_bits = 1 | ar_bits = 1 +++
++++ Step 7: Pass: |mem_read_id| time = 9 ns | er = 1 | ar = 1 | er_bits = 1 | ar_bits = 1 +++
++++ Step 8: Pass: |mem_to_reg_id| time = 9 ns | er = 1 | ar = 1 | er_bits = 1 | ar_bits = 1 +++
++++ Step 9: Pass: |alu_op_id| time = 9 ns | er = 0 | ar = 0 | er_bits = 2 | ar_bits = 2 +++
++++ Step 10: Pass: |mem_write_id| time = 9 ns | er = 0 | ar = 0 | er_bits = 1 | ar_bits = 1 +++
++++ Step 11: Pass: |alu_src_id| time = 9 ns | er = 1 | ar = 1 | er_bits = 1 | ar_bits = 1 +++
++++ Step 12: Pass: |reg_write_id| time = 9 ns | er = 1 | ar = 1 | er_bits = 1 | ar_bits = 1 +++
++++ Step 13: Pass: |read_data1_id| time = 9 ns | er = 16 | ar = 16 | er_bits = 64 | ar_bits = 64 +++
+
+*** Clock Cycle 3 ***
+
+Fetch - NOP
++++ Step 1: Pass: |cur_pc_if| time = 13 ns | er = 8 | ar = 8 | er_bits = 64 | ar_bits = 64 +++
++++ Step 2: Pass: |instruction_if| time = 13 ns | er = 0 | ar = 0 | er_bits = 32 | ar_bits = 32 +++
+
+Decode - NOP
++++ Step 1: Pass: |cur_pc_id| time = 13 ns | er = 4 | ar = 4 | er_bits = 64 | ar_bits = 64 +++
+
+Execute - LDUR X9, [X22, #64]
++++ Step 1: Pass: |cur_pc_ie| time = 13 ns | er = 0 | ar = 0 | er_bits = 64 | ar_bits = 64 +++
++++ Step 2: Pass: |alu_result_ie| time = 13 ns | er = 80 | ar = 80 | er_bits = 64 | ar_bits = 64 +++
++++ Step 3: Pass: |zero_ie| time = 13 ns | er = 0 | ar = 0 | er_bits = 1 | ar_bits = 1 +++
++++ Step 4: Pass: |uncondbranch_ie| time = 13 ns | er = 0 | ar = 0 | er_bits = 1 | ar_bits = 1 +++
++++ Step 5: Pass: |branch_ie| time = 13 ns | er = 0 | ar = 0 | er_bits = 1 | ar_bits = 1 +++
++++ Step 6: Pass: |mem_read_ie| time = 13 ns | er = 1 | ar = 1 | er_bits = 1 | ar_bits = 1 +++
++++ Step 7: Pass: |mem_to_reg_ie| time = 13 ns | er = 1 | ar = 1 | er_bits = 1 | ar_bits = 1 +++
++++ Step 8: Pass: |mem_write_ie| time = 13 ns | er = 0 | ar = 0 | er_bits = 1 | ar_bits = 1 +++
++++ Step 9: Pass: |reg_write_ie| time = 13 ns | er = 1 | ar = 1 | er_bits = 1 | ar_bits = 1 +++
++++ Step 10: Pass: |write_register_ie| time = 13 ns | er = 1001 | ar = 1001 | er_bits = 5 | ar_bits = 5 +++
+
+*** Clock Cycle 4 ***
+
+Fetch - ADD X10, X19, X9
++++ Step 1: Pass: |cur_pc_if| time = 17 ns | er = 12 | ar = 12 | er_bits = 64 | ar_bits = 64 +++
++++ Step 2: Pass: |instruction_if| time = 17 ns | er = 8b09026a | ar = 8b09026a | er_bits = 32 | ar_bits = 32 +++
+
+Decode - NOP
++++ Step 1: Pass: |cur_pc_id| time = 17 ns | er = 8 | ar = 8 | er_bits = 64 | ar_bits = 64 +++
+
+Execute - NOP
++++ Step 1: Pass: |cur_pc_ie| time = 17 ns | er = 4 | ar = 4 | er_bits = 64 | ar_bits = 64 +++
+
+Memory - LDUR X9, [X22, #64]
++++ Step 1: Pass: |cur_pc_im| time = 17 ns | er = 0 | ar = 0 | er_bits = 64 | ar_bits = 64 +++
++++ Step 2: Pass: |mem_read_data_im| time = 17 ns | er = 20 | ar = 20 | er_bits = 64 | ar_bits = 64 +++
++++ Step 3: Pass: |pc_src_im| time = 17 ns | er = 0 | ar = 0 | er_bits = 1 | ar_bits = 1 +++
++++ Step 4: Pass: |mem_to_reg_im| time = 17 ns | er = 1 | ar = 1 | er_bits = 1 | ar_bits = 1 +++
++++ Step 5: Pass: |reg_write_im| time = 17 ns | er = 1 | ar = 1 | er_bits = 1 | ar_bits = 1 +++
++++ Step 6: Pass: |write_register_im| time = 17 ns | er = 1001 | ar = 1001 | er_bits = 5 | ar_bits = 5 +++
+
+*** Clock Cycle 5 ***
+
+Fetch - NOP
++++ Step 1: Pass: |cur_pc_if| time = 21 ns | er = 16 | ar = 16 | er_bits = 64 | ar_bits = 64 +++
++++ Step 2: Pass: |instruction_if| time = 21 ns | er = 0 | ar = 0 | er_bits = 32 | ar_bits = 32 +++
+
+Decode - ADD X10, X19, X9
++++ Step 1: Pass: |cur_pc_id| time = 21 ns | er = 12 | ar = 12 | er_bits = 64 | ar_bits = 64 +++
++++ Step 2: Pass: |opcode_id| time = 21 ns | er = 10001011000 | ar = 10001011000 | er_bits = 11 | ar_bits = 11 +++
++++ Step 3: Pass: |reg2_loc_id| time = 21 ns | er = 0 | ar = 0 | er_bits = 1 | ar_bits = 1 +++
++++ Step 4: Pass: |uncondbranch_id| time = 21 ns | er = 0 | ar = 0 | er_bits = 1 | ar_bits = 1 +++
++++ Step 5: Pass: |branch_id| time = 21 ns | er = 0 | ar = 0 | er_bits = 1 | ar_bits = 1 +++
++++ Step 6: Pass: |mem_read_id| time = 21 ns | er = 0 | ar = 0 | er_bits = 1 | ar_bits = 1 +++
++++ Step 7: Pass: |mem_to_reg_id| time = 21 ns | er = 0 | ar = 0 | er_bits = 1 | ar_bits = 1 +++
++++ Step 8: Pass: |alu_op_id| time = 21 ns | er = 10 | ar = 10 | er_bits = 2 | ar_bits = 2 +++
++++ Step 9: Pass: |mem_write_id| time = 21 ns | er = 0 | ar = 0 | er_bits = 1 | ar_bits = 1 +++
++++ Step 10: Pass: |alu_src_id| time = 21 ns | er = 0 | ar = 0 | er_bits = 1 | ar_bits = 1 +++
++++ Step 11: Pass: |reg_write_id| time = 21 ns | er = 1 | ar = 1 | er_bits = 1 | ar_bits = 1 +++
++++ Step 12: Pass: |read_data1_id| time = 21 ns | er = 10 | ar = 10 | er_bits = 64 | ar_bits = 64 +++
++++ Step 13: Pass: |read_data2_id| time = 21 ns | er = 20 | ar = 20 | er_bits = 64 | ar_bits = 64 +++
+
+Execute - NOP
++++ Step 1: Pass: |cur_pc_ie| time = 21 ns | er = 8 | ar = 8 | er_bits = 64 | ar_bits = 64 +++
+
+Memory - NOP
++++ Step 1: Pass: |cur_pc_im| time = 21 ns | er = 4 | ar = 4 | er_bits = 64 | ar_bits = 64 +++
+
+Writeback - LDUR X9, [X22, #64]
++++ Step 1: Pass: |cur_pc_iw| time = 21 ns | er = 0 | ar = 0 | er_bits = 64 | ar_bits = 64 +++
++++ Step 2: Pass: |write_data_iw| time = 21 ns | er = 20 | ar = 20 | er_bits = 64 | ar_bits = 64 +++
++++ Step 3: Pass: |reg_write_iw| time = 21 ns | er = 1 | ar = 1 | er_bits = 1 | ar_bits = 1 +++
++++ Step 4: Pass: |write_register_iw| time = 21 ns | er = 1001 | ar = 1001 | er_bits = 5 | ar_bits = 5 +++
+
+Pass Count = 61
+Fail Count = 0

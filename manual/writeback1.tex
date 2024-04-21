@@ -10,13 +10,15 @@
 
 \WrapBarrier
 
-\section{Mux}
-This stage consists on only one item, a mux to select between the output of memory and the output of the ALU.  The control is the MemtoReg control line, see Fig~\ref{fig:wb}.  Since the mux has already been tested it does not need a testbench.  The stage thus has only 3 inputs (2 data and 1 control) and one output, the result.
+\section{WriteBack Stage}
+This stage consists on only one item, a mux to select between the output of memory and the output of the ALU.  The control is the MemtoReg control line, see Fig~\ref{fig:wb}.  Since the mux has already been tested it does not need a testbench.  The stage thus has only 3 inputs (2 data and 1 control) and one output, the result.  Despite its simplicity, you need to create a file called iWriteBack.v and put the mux inside of the iWriteBack module.
 
 \section{Datapath}
-You are ready to assemble the full non-pipelined datapath shown in Fig~\ref{fig:datapath}.  To do this, you will need to combine all 5 stages into datapath.sv.  datapath.sv is a new top-level file, so it is the testbench.  Verify operation of your datapath by running your set of instructions in instrData.data and testing the output.  These instructions are the 10 instructions from the Expected Results Table.  
+Now you are ready to assemble the full non-pipelined datapath shown in Fig~\ref{fig:datapath}.  To do this, you will need to combine all 5 stages into datapath.sv.  datapath.sv is a new top-level file, so it is the testbench.  Verify operation of your datapath by running your set of instructions in instrData.data and testing the output.  These instructions are the 10 instructions from the Expected Results Table.  I recommend creating datapath.sv and copying and pasting from fde\_integration.sv as a starting point.  
 
 Now that we have a writeback stage, we do not need to set write\_data in the initial section of datapath.sv.  Rather, you should connect write\_data from the WriteBack stage to the Decode stage.  Because we now have a memory stage, we should no longer need to set pc\_src in the inital section of datapath.sv.  However, our test instructions are not meant to run like a program and would yield strange results.  So for right now, we want to keep pc\_src hard-coded to 0 in datapath.sv.  To do this, we will use a new reg called pc\_src\_tmp and set it to 0.  Then we will use pc\_src\_tmp as the input to the iFetch module.  pc\_src will be a wire that is an output of the iMemory module.  In part 2 of this lab, we will get rid of pc\_src\_tmp and connect pc\_src from iMemory to iFetch.
+
+Datapath.sv should have 175 verifies.  This includes the 159 from fde\_integration plus 1 from mem\_read\_data, 10 from pc\_src, and 5 from write\_data.
 
 \begin{figure}
 \caption{Full Non-Pipelined Datapath}\label{fig:datapath}
@@ -29,7 +31,7 @@ Now that we have a writeback stage, we do not need to set write\_data in the ini
 
 You are to:
 \begin{enumerate}
-\item Update your Expected Results Table to include the iWriteBack stage.
+\item Update your Expected Results Table to include the signals from the iMemory and iWriteBack stages (if you have not done this already).
 \item Create the iWriteback stage consisting of one Mux.
 \item Integrate all five stages into the file datapath.sv.
 \item Run simulations to verify that your results match your Expected Results table.   
